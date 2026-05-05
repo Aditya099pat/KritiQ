@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3 Idiots — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="toast-container" id="toastContainer"></div>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#boxoffice" class="nav-link">Box Office</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<div class="detail-hero" style="--backdrop: url('https://wallpapercave.com/wp/wp6568176.jpg')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://wallpapercave.com/wp/wp6568176.jpg" alt="3 Idiots poster">
+    </div>
+    <div class="detail-info">
+      <h1>3 IDIOTS</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb"><div><div class="score-label">IMDB</div><div class="score-num">8.4</div></div><span style="color:var(--gold);font-size:22px">★</span></div>
+        <div class="score-rt"><div><div class="score-label">Rotten Tomatoes</div><div class="score-num">100%</div></div><span style="font-size:18px">🍅</span></div>
+        <span class="detail-tag">2009</span>
+        <span class="detail-tag">Hindi · Comedy · Drama</span>
+        <span class="detail-tag">U/A</span>
+        <span class="detail-tag">2h 50m</span>
+        <span style="color:var(--green);font-weight:700;font-size:14px">💰 ₹459Cr All Time</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()"><span>👍</span> Like <span id="likeCount">21.4K</span></button>
+  <button class="action-btn dislike" onclick="handleDislike()"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="handleShare()"><span>🔗</span> Share</button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;"><span style="color:var(--green);font-weight:700;">🎓 All izz well</span> — India's most-loved comedy ever</div>
+</div>
+
+<div class="detail-body">
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/zIKu9k50SDo?si=tiXEZSnnM9kV4gz9" title="3 Idiots Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">
+          Farhan and Raju are two friends searching for their long-lost college buddy Rancho — the most unconventional, free-spirited engineering student the Imperial College of Engineering ever saw. As they travel to find him, the film unspools their years together under the tyrannical "Virus" — the institute's rule-obsessed director — and how Rancho's philosophy of learning through passion rather than fear changed everything.
+          <br><br>
+          3 Idiots is simultaneously a riotous comedy, a sharp critique of India's exam-obsessed education system, and a deeply moving friendship story. Aamir Khan's Rancho is one of Hindi cinema's most beloved characters, and Rajkumar Hirani's direction ensures that every laugh has a heart and every message lands without feeling preachy. A film that generations of Indian students have claimed as their own.
+        </p>
+      </div>
+
+      <!-- ICONIC QUOTES -->
+      <div class="content-block">
+        <div class="block-title">💬 Iconic Dialogues</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="padding:16px;background:rgba(33,208,122,0.07);border-left:3px solid var(--green);border-radius:var(--radius);font-size:14px;color:var(--text2);font-style:italic;line-height:1.7;">"All izz well. Dil ko bewakoof banana zaroori hai. Haalaat toh waise bhi kharaab hote hain."</div>
+          <div style="padding:16px;background:rgba(245,197,24,0.07);border-left:3px solid var(--gold);border-radius:var(--radius);font-size:14px;color:var(--text2);font-style:italic;line-height:1.7;">"Kabil bano, kabil. Kamyaabi jhak maar ke peeche aayegi."</div>
+          <div style="padding:16px;background:rgba(229,9,20,0.07);border-left:3px solid var(--accent);border-radius:var(--radius);font-size:14px;color:var(--text2);font-style:italic;line-height:1.7;">"Life is a race. Agar tez nahi bhago toh koi tumhe kuchal ke aage nikal jaata hai."</div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/aamir-khan-02" alt="Aamir Khan" onerror="this.src='https://ui-avatars.com/api/?name=AK&background=e50914&color=fff'"></div><div class="cast-name">Aamir Khan</div><div class="cast-role">Rancho (Ranchoddas)</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/sharman-joshi" alt="Sharman Joshi" onerror="this.src='https://ui-avatars.com/api/?name=SJ&background=1a1d2e&color=fff'"></div><div class="cast-name">Sharman Joshi</div><div class="cast-role">Raju Rastogi</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/r-madhvan" alt="R. Madhavan" onerror="this.src='https://ui-avatars.com/api/?name=RM&background=1a1d2e&color=fff'"></div><div class="cast-name">R. Madhavan</div><div class="cast-role">Farhan Qureshi</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/kareena-kapoor-khan01" alt="Kareena Kapoor" onerror="this.src='https://ui-avatars.com/api/?name=KK&background=1a1d2e&color=fff'"></div><div class="cast-name">Kareena Kapoor Khan</div><div class="cast-role">Pia Sahastrabuddhe</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=BB&background=1a1d2e&color=fff"></div><div class="cast-name">Boman Irani</div><div class="cast-role">Prof. Viru "Virus"</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=OM&background=1a1d2e&color=fff"></div><div class="cast-name">Omi Vaidya</div><div class="cast-role">Chatur "Silencer"</div></div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Write Your Review</div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="All izz well! Share your memories of 3 Idiots..."></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker"><span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span></div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#059669,#10b981)">N</div>
+              <div><div class="review-name">Neha R.</div><div class="review-stars">★★★★★</div></div>
+              <span class="review-time">3 days ago</span>
+            </div>
+            <p class="review-text">I've watched this film at least 15 times and I cry every single time at the birth scene and the kabil bano speech. No Bollywood film has ever balanced humour and heart this perfectly. An absolute masterpiece.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (147)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#0891b2,#06b6d4)">M</div>
+              <div><div class="review-name">Manish K.</div><div class="review-stars">★★★★★</div></div>
+              <span class="review-time">1 week ago</span>
+            </div>
+            <p class="review-text">This movie literally changed how I thought about my career. The message is simple but it hits different when you're 18 and stressed about exams. Aamir Khan is simply a genius.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (102)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-sidebar">
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb"><div class="score-label">IMDB</div><div class="score-big">8.4</div><div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span></div><div class="score-sub">460K votes</div></div>
+          <div class="rating-box rt"><div class="score-label">Rotten Tomatoes</div><div class="score-big">100%</div><div class="score-sub">Certified Fresh 🍅</div><div class="score-sub" style="margin-top:4px">97% Audience</div></div>
+        </div>
+        <div style="margin-top:8px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Rating Distribution</div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span class="rating-bar-label">5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:72%"></div></div><span class="rating-bar-count">72%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:18%;background:var(--green)"></div></div><span class="rating-bar-count">18%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:6%;background:#888"></div></div><span class="rating-bar-count">6%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%;background:#555"></div></div><span class="rating-bar-count">2%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%;background:#333"></div></div><span class="rating-bar-count">2%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Film Info</div>
+        <table class="info-table">
+          <tr><td>Director</td><td>Rajkumar Hirani</td></tr>
+          <tr><td>Written by</td><td>Abhijat Joshi, Rajkumar Hirani</td></tr>
+          <tr><td>Based on</td><td>"Five Point Someone" — Chetan Bhagat</td></tr>
+          <tr><td>Music</td><td>Shantanu Moitra</td></tr>
+          <tr><td>Runtime</td><td>170 minutes</td></tr>
+          <tr><td>Released</td><td>December 25, 2009</td></tr>
+          <tr><td>Box Office</td><td>₹459 Cr (All India)</td></tr>
+          <tr><td>Awards</td><td>Filmfare Best Film, Director, Actor</td></tr>
+        </table>
+        <div style="margin-top:16px"><div class="genre-tags"><span class="genre-tag">Hindi</span><span class="genre-tag">Comedy</span><span class="genre-tag">Drama</span><span class="genre-tag">Feel-Good</span><span class="genre-tag">Classic</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+<script>
+  const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>40));
+  function updateAuthUI(){const user=localStorage.getItem('loggedInUser');if(user){document.getElementById('loginBtn').style.display='none';document.getElementById('userPill').style.display='flex';document.getElementById('userName').textContent=user;document.getElementById('userAvatar').textContent=user[0].toUpperCase();}}
+  function handleLogout(){localStorage.removeItem('loggedInUser');location.reload();}
+  updateAuthUI();
+  function showToast(msg,type='info'){const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(20px)';setTimeout(()=>t.remove(),400);},3000);}
+  function toggleWishlist(){const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');const title='3 Idiots';const btn=document.getElementById('wishlistBtn');const idx=wl.indexOf(title);if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed','info');}localStorage.setItem('wishlist',JSON.stringify(wl));}
+  let liked=false;function handleLike(){liked=!liked;document.getElementById('likeBtn').style.background=liked?'rgba(33,208,122,0.3)':'';showToast(liked?'👍 Liked!':'Like removed','success');}
+  function handleDislike(){showToast('👎 Noted.','info');}function handleShare(){navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success');}
+  let sel=0;function setStars(n){sel=n;document.querySelectorAll('#starPicker span').forEach((s,i)=>s.classList.toggle('lit',i<n));document.getElementById('starLabel').textContent=['','Terrible','Poor','Average','Good','Excellent'][n];}
+  function postReview(){const input=document.getElementById('reviewInput');const list=document.getElementById('reviewList');if(!input.value.trim()){showToast('Write a review first','error');return;}if(!sel){showToast('Please rate first','error');return;}const user=localStorage.getItem('loggedInUser')||'Anonymous';const sh='★'.repeat(sel)+`<span style="color:var(--surface3)">${'★'.repeat(5-sel)}</span>`;const item=document.createElement('div');item.className='review-item';item.innerHTML=`<div class="review-header"><div class="review-avatar">${user[0].toUpperCase()}</div><div><div class="review-name">${user}</div><div class="review-stars">${sh}</div></div><span class="review-time">Just now</span></div><p class="review-text">${input.value}</p><div class="review-footer"><span class="review-react">👍 Helpful (0)</span></div>`;list.insertBefore(item,list.firstChild);input.value='';sel=0;setStars(0);showToast('✅ Review posted!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('3 Idiots')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+</script>
+</body>
+</html>

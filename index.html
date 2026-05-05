@@ -1,0 +1,735 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KritiQ — Movies & Series Reviews</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* Carousel Dots */
+    .hero-dots {
+      position: absolute;
+      bottom: 24px;
+      right: clamp(20px,6vw,96px);
+      display: flex;
+      gap: 8px;
+      z-index: 2;
+    }
+    .hero-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    .hero-dot.active {
+      background: var(--accent);
+      width: 24px;
+      border-radius: 4px;
+    }
+    /* Trending tag */
+    .trending-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      background: rgba(245,197,24,0.15);
+      border: 1px solid rgba(245,197,24,0.3);
+      border-radius: 6px;
+      color: var(--gold);
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .trending-badge::before { content: '🔥'; font-size: 10px; }
+    /* Continue watching */
+    .continue-card {
+      position: relative;
+      flex: 0 0 280px;
+      cursor: pointer;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      background: var(--surface);
+      border: 1px solid var(--line);
+      transition: var(--transition);
+    }
+    .continue-card:hover { transform: translateY(-6px); border-color: var(--line2); }
+    .continue-card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      display: block;
+    }
+    .continue-card-body { padding: 12px; }
+    .continue-card-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .continue-card-sub { font-size: 12px; color: var(--text3); margin-bottom: 10px; }
+    .progress-bar {
+      height: 3px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 3px;
+      transition: width 0.5s ease;
+    }
+    /* Announcement strip */
+    .announcement-strip {
+      background: linear-gradient(90deg, rgba(229,9,20,0.15), rgba(124,58,237,0.1), rgba(229,9,20,0.15));
+      border-top: 1px solid rgba(229,9,20,0.2);
+      border-bottom: 1px solid rgba(229,9,20,0.2);
+      padding: 10px clamp(20px, 5vw, 80px);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 13px;
+      overflow: hidden;
+    }
+    .strip-new {
+      flex-shrink: 0;
+      background: var(--accent);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+    }
+    .strip-text { color: var(--text2); }
+    .strip-link { color: var(--accent2); font-weight: 600; margin-left: auto; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+
+<!-- TOAST CONTAINER -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="#top10" class="nav-link active">Home</a>
+    <a href="#trending" class="nav-link">Movies</a>
+    <a href="#boxoffice" class="nav-link">Series</a>
+    <a href="#trending" class="nav-link">Trending</a>
+    <a href="#boxoffice" class="nav-link">Box Office</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" id="searchInput" placeholder="Search titles..." autocomplete="off">
+    </div>
+    <a href="login page.html" id="loginBtn">
+      <button class="btn-login">Sign In</button>
+    </a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<!-- ANNOUNCEMENT STRIP -->
+<div class="announcement-strip">
+  <span class="strip-new">NEW</span>
+  <span class="strip-text">House of the Dragon Season 3 · Dune: Messiah · Stranger Things Final Season — now on KritiQ</span>
+  <a href="#" class="strip-link">Explore →</a>
+</div>
+
+<!-- HERO -->
+<header class="hero" id="heroSection" style="--hero-img: url('https://cdnb.artstation.com/p/assets/images/images/031/128/313/medium/mayank-kumarr-2.jpg?1602685224')">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-content">
+    <div class="hero-badge">KritiQ Featured Pick</div>
+    <h1 id="heroTitle">THE BOYS</h1>
+    <div class="hero-meta">
+      <div class="hero-score">
+        <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        8.6 / 10
+      </div>
+      <span class="hero-tag" id="heroYear">2019</span>
+      <span class="hero-tag" id="heroGenre">Action · Adventure · Drama</span>
+      <span class="hero-tag" id="heroType">Series</span>
+      <span class="match-pct">97% Match</span>
+    </div>
+    <p class="hero-desc" id="heroDesc">A sharp, satirical superhero story where fame, power, and corruption collide. When ordinary people push back against superpowered monsters, the world will never be the same.</p>
+    <div class="hero-actions">
+      <a href="theboys.html" class="btn-play">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        View Details
+      </a>
+      <button class="btn-info" onclick="toggleWishlist('The Boys')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 5v14M5 12h14"/></svg>
+        Wishlist
+      </button>
+    </div>
+  </div>
+  <div class="hero-dots" id="heroDots">
+    <div class="hero-dot active" onclick="switchHero(0)"></div>
+    <div class="hero-dot" onclick="switchHero(1)"></div>
+    <div class="hero-dot" onclick="switchHero(2)"></div>
+  </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<main class="content-shell">
+
+  <!-- STATS ROW -->
+  <div class="stats-row fade-in">
+    <div class="stat-card">
+      <div class="stat-icon red">🎬</div>
+      <div>
+        <div class="stat-label">Total Titles</div>
+        <div class="stat-value">2,400+</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon gold">⭐</div>
+      <div>
+        <div class="stat-label">Avg Rating</div>
+        <div class="stat-value">8.1 / 10</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon green">✍️</div>
+      <div>
+        <div class="stat-label">User Reviews</div>
+        <div class="stat-value">140K+</div>
+      </div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-icon blue">👁️</div>
+      <div>
+        <div class="stat-label">Monthly Views</div>
+        <div class="stat-value">5.2M</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- GENRE TABS -->
+  <div class="genre-tabs">
+    <button class="genre-tab active" onclick="filterGenre(this,'all')">All</button>
+    <button class="genre-tab" onclick="filterGenre(this,'action')">Action</button>
+    <button class="genre-tab" onclick="filterGenre(this,'drama')">Drama</button>
+    <button class="genre-tab" onclick="filterGenre(this,'thriller')">Thriller</button>
+    <button class="genre-tab" onclick="filterGenre(this,'comedy')">Comedy</button>
+    <button class="genre-tab" onclick="filterGenre(this,'scifi')">Sci-Fi</button>
+    <button class="genre-tab" onclick="filterGenre(this,'hindi')">Hindi</button>
+    <button class="genre-tab" onclick="filterGenre(this,'series')">Series</button>
+  </div>
+
+  <!-- TOP 10 TODAY -->
+  <div class="section-header fade-in" id="top10">
+    <h2 class="section-title">Top 10 Today</h2>
+    <a href="#" class="see-all">See all</a>
+  </div>
+  <div class="movie-row" id="top10Row">
+    <a href="spiderman.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/en/f/f2/The_Amazing_Spider-Man_%282012_video_game%29_cover.jpg" alt="The Amazing Spider-Man" loading="lazy">
+        <div class="rank-badge">TOP<br>01</div>
+        <div class="rating-badge">6.9</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Spider-Man')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">The Amazing Spider-Man</div>
+        <div class="movie-card-meta"><span>2012</span><span class="dot">·</span><span>Movie</span></div>
+      </div>
+    </a>
+    <a href="avatar.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRexQLg84M7H3nVFN_zyy-rYwuJHBhV6PxuMg&s" alt="Avatar" loading="lazy">
+        <div class="rank-badge">TOP<br>02</div>
+        <div class="rating-badge">7.9</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Avatar')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">Avatar</div>
+        <div class="movie-card-meta"><span>2009</span><span class="dot">·</span><span>Movie</span></div>
+      </div>
+    </a>
+    <a href="shawshank.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://e0.pxfuel.com/wallpapers/815/117/desktop-wallpaper-the-shawshank-redemption-2022-movie.jpg" alt="Shawshank Redemption" loading="lazy">
+        <div class="rank-badge">TOP<br>03</div>
+        <div class="rating-badge">9.3</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Shawshank')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">The Shawshank Redemption</div>
+        <div class="movie-card-meta"><span>1994</span><span class="dot">·</span><span>Movie</span></div>
+      </div>
+    </a>
+    <a href="godfather.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ" alt="The Godfather" loading="lazy">
+        <div class="rank-badge">TOP<br>04</div>
+        <div class="rating-badge">9.2</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Godfather')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">The Godfather</div>
+        <div class="movie-card-meta"><span>1972</span><span class="dot">·</span><span>Movie</span></div>
+      </div>
+    </a>
+    <a href="dune.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAgLc5w_OzCJrCBKulTcMiwvuFaDvzothe-w&s" alt="Dune" loading="lazy">
+        <div class="rank-badge">TOP<br>05</div>
+        <div class="rating-badge">8.0</div>
+        <div class="new-badge">4K</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Dune')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">Dune</div>
+        <div class="movie-card-meta"><span>2021</span><span class="dot">·</span><span>Movie</span></div>
+      </div>
+    </a>
+    <a href="GOT.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTNhMDJmNmYtNDQ5OS00ODdlLWE0ZDAtZTgyYTIwNDY3OTU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Game of Thrones" loading="lazy">
+        <div class="rank-badge">TOP<br>06</div>
+        <div class="rating-badge">9.4</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('GOT')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">Game of Thrones</div>
+        <div class="movie-card-meta"><span>2011</span><span class="dot">·</span><span>Series</span></div>
+      </div>
+    </a>
+    <a href="theboys.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://cdnb.artstation.com/p/assets/images/images/031/128/313/medium/mayank-kumarr-2.jpg?1602685224" alt="The Boys" loading="lazy">
+        <div class="rank-badge">TOP<br>07</div>
+        <div class="rating-badge">8.6</div>
+        <div class="new-badge">HOT</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('The Boys')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">The Boys</div>
+        <div class="movie-card-meta"><span>2019</span><span class="dot">·</span><span>Series</span></div>
+      </div>
+    </a>
+    <a href="ESCAPE.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://m.media-amazon.com/images/M/MV5BMDEzNjE1OTI3NV5BMl5BanBnXkFtZTgwNjU3NzQ1NzM@._V1_.jpg" alt="Escape" loading="lazy">
+        <div class="rank-badge">TOP<br>08</div>
+        <div class="rating-badge">8.1</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Escape')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">Escape from Pretoria</div>
+        <div class="movie-card-meta"><span>2020</span><span class="dot">·</span><span>Movie</span></div>
+      </div>
+    </a>
+  </div>
+
+  <!-- TRENDING INDIA -->
+  <div class="section-header fade-in" id="trending">
+    <h2 class="section-title">🔥 Trending in India</h2>
+    <a href="#" class="see-all">See all</a>
+  </div>
+  <div class="movie-row">
+    <a href="Kritiq_landing_1.html" class="movie-card wide">
+      <div class="movie-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/08/Agneepath_poster.jpg/250px-Agneepath_poster.jpg" alt="Agneepath" loading="lazy">
+        <div class="rank-badge">TOP<br>01</div>
+        <div class="rating-badge">7.6</div>
+        <div class="trending-badge" style="position:absolute;bottom:10px;left:10px;z-index:2;">🔥 Trending</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Agneepath')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">Agneepath</div>
+        <div class="movie-card-meta"><span>2012</span><span class="dot">·</span><span>Hindi</span><span class="dot">·</span><span>★ 7.6</span></div>
+      </div>
+    </a>
+    <a href="kabirsingh.html" class="movie-card wide">
+      <div class="movie-card-img">
+        <img src="https://m.media-amazon.com/images/M/MV5BYzE5ZWQ2MTMtZjJjYy00NWY4LTk2ZWItM2I3M2FhMzhlOWFlXkEyXkFqcGc@._V1_.jpg" alt="Kabir Singh" loading="lazy">
+        <div class="rank-badge">TOP<br>02</div>
+        <div class="rating-badge">7.0</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Kabir Singh')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">Kabir Singh</div>
+        <div class="movie-card-meta"><span>2019</span><span class="dot">·</span><span>Hindi</span><span class="dot">·</span><span>★ 7.0</span></div>
+      </div>
+    </a>
+    <a href="Kritiq_landing_3.html" class="movie-card wide">
+      <div class="movie-card-img">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTg2MGUwZmItOThkMC00MzBhLThkMTMtNjkxNTk0ZDk3ZjVlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Kho Gaye Hum Kahan" loading="lazy">
+        <div class="rank-badge">TOP<br>03</div>
+        <div class="rating-badge">7.4</div>
+        <div class="new-badge">NEW</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Kho Gaye')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">Kho Gaye Hum Kahan</div>
+        <div class="movie-card-meta"><span>2023</span><span class="dot">·</span><span>Hindi</span><span class="dot">·</span><span>★ 7.4</span></div>
+      </div>
+    </a>
+    <a href="Kritiq_landing_2.html" class="movie-card wide">
+      <div class="movie-card-img">
+        <img src="https://wallpapercave.com/wp/wp6568176.jpg" alt="3 Idiots" loading="lazy">
+        <div class="rank-badge">TOP<br>04</div>
+        <div class="rating-badge">8.4</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('3 Idiots')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">3 Idiots</div>
+        <div class="movie-card-meta"><span>2009</span><span class="dot">·</span><span>Hindi</span><span class="dot">·</span><span>★ 8.4</span></div>
+      </div>
+    </a>
+    <a href="Kritiq_landing_4.html" class="movie-card wide">
+      <div class="movie-card-img">
+        <img src="https://stat4.bollywoodhungama.in/wp-content/uploads/2016/03/Ghajjni-306x393.jpg" alt="Ghajini" loading="lazy">
+        <div class="rank-badge">TOP<br>05</div>
+        <div class="rating-badge">7.4</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Ghajini')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">Ghajini</div>
+        <div class="movie-card-meta"><span>2008</span><span class="dot">·</span><span>Hindi</span><span class="dot">·</span><span>★ 7.4</span></div>
+      </div>
+    </a>
+    <a href="Kritiq_landing_5.html" class="movie-card wide">
+      <div class="movie-card-img">
+        <img src="https://m.media-amazon.com/images/M/MV5BMDc3NWMwNGMtYjc3Mi00NzU5LWFiYjgtMTJjZGE3ZmFiNzRjXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="The Family Man" loading="lazy">
+        <div class="rank-badge">TOP<br>06</div>
+        <div class="rating-badge">8.7</div>
+        <div class="new-badge">HOT</div>
+        <div class="movie-card-overlay">
+          <div class="card-quick-actions">
+            <span class="card-quick-btn play-btn">▶ Details</span>
+            <span class="card-quick-btn info-btn" onclick="event.preventDefault();toggleWishlist('Family Man')">+ Wishlist</span>
+          </div>
+        </div>
+      </div>
+      <div class="movie-card-info">
+        <div class="movie-card-title">The Family Man</div>
+        <div class="movie-card-meta"><span>2019</span><span class="dot">·</span><span>Series</span><span class="dot">·</span><span>★ 8.7</span></div>
+      </div>
+    </a>
+  </div>
+
+  <!-- BOX OFFICE -->
+  <div class="section-header fade-in" id="boxoffice">
+    <h2 class="section-title">🏆 Top Box Office India</h2>
+    <a href="#" class="see-all">See all</a>
+  </div>
+  <div class="movie-row">
+    <a href="Kritiq_landing_1.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/08/Agneepath_poster.jpg/250px-Agneepath_poster.jpg" alt="Agneepath" loading="lazy">
+        <div class="rank-badge">TOP<br>01</div>
+        <div class="rating-badge">7.6</div>
+        <div class="movie-card-overlay"><div class="card-quick-actions"><span class="card-quick-btn play-btn">▶ Details</span></div></div>
+      </div>
+      <div class="movie-card-info"><div class="movie-card-title">Agneepath</div><div class="movie-card-meta"><span>2012</span><span class="dot">·</span><span>₹252Cr</span></div></div>
+    </a>
+    <a href="kabirsingh.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://m.media-amazon.com/images/M/MV5BYzE5ZWQ2MTMtZjJjYy00NWY4LTk2ZWItM2I3M2FhMzhlOWFlXkEyXkFqcGc@._V1_.jpg" alt="Kabir Singh" loading="lazy">
+        <div class="rank-badge">TOP<br>02</div>
+        <div class="rating-badge">7.0</div>
+        <div class="movie-card-overlay"><div class="card-quick-actions"><span class="card-quick-btn play-btn">▶ Details</span></div></div>
+      </div>
+      <div class="movie-card-info"><div class="movie-card-title">Kabir Singh</div><div class="movie-card-meta"><span>2019</span><span class="dot">·</span><span>₹379Cr</span></div></div>
+    </a>
+    <a href="Kritiq_landing_3.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTg2MGUwZmItOThkMC00MzBhLThkMTMtNjkxNTk0ZDk3ZjVlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Kho Gaye" loading="lazy">
+        <div class="rank-badge">TOP<br>03</div>
+        <div class="rating-badge">7.4</div>
+        <div class="movie-card-overlay"><div class="card-quick-actions"><span class="card-quick-btn play-btn">▶ Details</span></div></div>
+      </div>
+      <div class="movie-card-info"><div class="movie-card-title">Kho Gaye Hum Kahan</div><div class="movie-card-meta"><span>2023</span><span class="dot">·</span><span>OTT Hit</span></div></div>
+    </a>
+    <a href="Kritiq_landing_2.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://wallpapercave.com/wp/wp6568176.jpg" alt="3 Idiots" loading="lazy">
+        <div class="rank-badge">TOP<br>04</div>
+        <div class="rating-badge">8.4</div>
+        <div class="movie-card-overlay"><div class="card-quick-actions"><span class="card-quick-btn play-btn">▶ Details</span></div></div>
+      </div>
+      <div class="movie-card-info"><div class="movie-card-title">3 Idiots</div><div class="movie-card-meta"><span>2009</span><span class="dot">·</span><span>₹459Cr</span></div></div>
+    </a>
+    <a href="Kritiq_landing_4.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://stat4.bollywoodhungama.in/wp-content/uploads/2016/03/Ghajjni-306x393.jpg" alt="Ghajini" loading="lazy">
+        <div class="rank-badge">TOP<br>05</div>
+        <div class="rating-badge">7.4</div>
+        <div class="movie-card-overlay"><div class="card-quick-actions"><span class="card-quick-btn play-btn">▶ Details</span></div></div>
+      </div>
+      <div class="movie-card-info"><div class="movie-card-title">Ghajini</div><div class="movie-card-meta"><span>2008</span><span class="dot">·</span><span>₹200Cr</span></div></div>
+    </a>
+    <a href="shawshank.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://e0.pxfuel.com/wallpapers/815/117/desktop-wallpaper-the-shawshank-redemption-2022-movie.jpg" alt="Shawshank" loading="lazy">
+        <div class="rank-badge">TOP<br>06</div>
+        <div class="rating-badge">9.3</div>
+        <div class="movie-card-overlay"><div class="card-quick-actions"><span class="card-quick-btn play-btn">▶ Details</span></div></div>
+      </div>
+      <div class="movie-card-info"><div class="movie-card-title">The Shawshank Redemption</div><div class="movie-card-meta"><span>1994</span><span class="dot">·</span><span>Classic</span></div></div>
+    </a>
+    <a href="godfather.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ" alt="Godfather" loading="lazy">
+        <div class="rank-badge">TOP<br>07</div>
+        <div class="rating-badge">9.2</div>
+        <div class="movie-card-overlay"><div class="card-quick-actions"><span class="card-quick-btn play-btn">▶ Details</span></div></div>
+      </div>
+      <div class="movie-card-info"><div class="movie-card-title">The Godfather</div><div class="movie-card-meta"><span>1972</span><span class="dot">·</span><span>Classic</span></div></div>
+    </a>
+    <a href="avatar.html" class="movie-card">
+      <div class="movie-card-img">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRexQLg84M7H3nVFN_zyy-rYwuJHBhV6PxuMg&s" alt="Avatar" loading="lazy">
+        <div class="rank-badge">TOP<br>08</div>
+        <div class="rating-badge">7.9</div>
+        <div class="movie-card-overlay"><div class="card-quick-actions"><span class="card-quick-btn play-btn">▶ Details</span></div></div>
+      </div>
+      <div class="movie-card-info"><div class="movie-card-title">Avatar</div><div class="movie-card-meta"><span>2009</span><span class="dot">·</span><span>$2.9B WW</span></div></div>
+    </a>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">KRITI<span>Q</span></div>
+      <p class="footer-desc">Your ultimate destination for movie and series reviews, ratings, and community discussions. Discover what's worth watching.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Discover</h4>
+      <ul class="footer-links">
+        <li><a href="#">Top Rated</a></li>
+        <li><a href="#">New Releases</a></li>
+        <li><a href="#">Trending</a></li>
+        <li><a href="#">Box Office</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Genre</h4>
+      <ul class="footer-links">
+        <li><a href="#">Action</a></li>
+        <li><a href="#">Drama</a></li>
+        <li><a href="#">Thriller</a></li>
+        <li><a href="#">Comedy</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Account</h4>
+      <ul class="footer-links">
+        <li><a href="login page.html">Sign In</a></li>
+        <li><a href="create_acc.html">Sign Up</a></li>
+        <li><a href="#">My Wishlist</a></li>
+        <li><a href="#">My Reviews</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <span>Made with ❤️ for movie lovers</span>
+  </div>
+</footer>
+
+<script>
+  // ── NAVBAR SCROLL EFFECT ──────────────────────────────────────
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    navbar.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  // ── USER AUTH ─────────────────────────────────────────────────
+  function updateAuthUI() {
+    const user = localStorage.getItem('loggedInUser');
+    const loginBtn = document.getElementById('loginBtn');
+    const userPill = document.getElementById('userPill');
+    const userName = document.getElementById('userName');
+    const userAvatar = document.getElementById('userAvatar');
+    if (user) {
+      loginBtn.style.display = 'none';
+      userPill.style.display = 'flex';
+      userName.textContent = user;
+      userAvatar.textContent = user[0].toUpperCase();
+    } else {
+      loginBtn.style.display = '';
+      userPill.style.display = 'none';
+    }
+  }
+
+  function handleLogout() {
+    if (confirm('Sign out?')) {
+      localStorage.removeItem('loggedInUser');
+      updateAuthUI();
+      showToast('Signed out successfully', 'info');
+    }
+  }
+
+  updateAuthUI();
+
+  // ── HERO CAROUSEL ─────────────────────────────────────────────
+  const heroes = [
+    {
+      img: "url('https://cdnb.artstation.com/p/assets/images/images/031/128/313/medium/mayank-kumarr-2.jpg?1602685224')",
+      title: 'THE BOYS', year: '2019', genre: 'Action · Adventure · Drama', type: 'Series',
+      desc: 'A sharp, satirical superhero story where fame, power, and corruption collide.',
+      link: 'theboys.html', rating: '8.6'
+    },
+    {
+      img: "url('https://m.media-amazon.com/images/M/MV5BMTNhMDJmNmYtNDQ5OS00ODdlLWE0ZDAtZTgyYTIwNDY3OTU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg')",
+      title: 'GAME OF THRONES', year: '2011', genre: 'Fantasy · Drama · War', type: 'Series',
+      desc: 'Nine noble families fight for the Iron Throne of Westeros in the greatest epic ever told.',
+      link: 'GOT.html', rating: '9.4'
+    },
+    {
+      img: "url('https://e0.pxfuel.com/wallpapers/815/117/desktop-wallpaper-the-shawshank-redemption-2022-movie.jpg')",
+      title: 'SHAWSHANK', year: '1994', genre: 'Drama · Crime', type: 'Movie',
+      desc: 'Two imprisoned men bond over years, finding solace and eventual redemption through acts of decency.',
+      link: 'shawshank.html', rating: '9.3'
+    }
+  ];
+
+  let heroIdx = 0;
+  function switchHero(idx) {
+    heroIdx = idx;
+    const h = heroes[idx];
+    document.getElementById('heroSection').style.setProperty('--hero-img', h.img);
+    document.getElementById('heroBg').style.backgroundImage = h.img;
+    document.getElementById('heroTitle').textContent = h.title;
+    document.getElementById('heroYear').textContent = h.year;
+    document.getElementById('heroGenre').textContent = h.genre;
+    document.getElementById('heroType').textContent = h.type;
+    document.getElementById('heroDesc').textContent = h.desc;
+    document.querySelector('.hero-actions a.btn-play').href = h.link;
+    document.querySelectorAll('.hero-dot').forEach((d, i) => d.classList.toggle('active', i === idx));
+  }
+
+  setInterval(() => switchHero((heroIdx + 1) % heroes.length), 6000);
+
+  // ── WISHLIST TOAST ────────────────────────────────────────────
+  function toggleWishlist(title) {
+    const wl = JSON.parse(localStorage.getItem('wishlist') || '[]');
+    const idx = wl.indexOf(title);
+    if (idx === -1) {
+      wl.push(title);
+      showToast(`✅ "${title}" added to Wishlist`, 'success');
+    } else {
+      wl.splice(idx, 1);
+      showToast(`🗑️ "${title}" removed from Wishlist`, 'info');
+    }
+    localStorage.setItem('wishlist', JSON.stringify(wl));
+  }
+
+  function showToast(msg, type = 'info') {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.style.opacity = '0'; t.style.transform = 'translateX(20px)'; setTimeout(() => t.remove(), 400); }, 3000);
+  }
+
+  // ── SEARCH ────────────────────────────────────────────────────
+  const searchInput = document.getElementById('searchInput');
+  const allCards = [];
+  document.querySelectorAll('.movie-card').forEach(card => allCards.push(card));
+
+  searchInput.addEventListener('input', e => {
+    const q = e.target.value.toLowerCase().trim();
+    if (!q) { allCards.forEach(c => c.closest('.movie-card') && (c.style.opacity = '')); return; }
+    allCards.forEach(card => {
+      const title = card.querySelector('.movie-card-title')?.textContent.toLowerCase() || '';
+      card.style.opacity = title.includes(q) ? '1' : '0.25';
+    });
+  });
+
+  // ── GENRE FILTER ──────────────────────────────────────────────
+  function filterGenre(btn, genre) {
+    document.querySelectorAll('.genre-tab').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    showToast(`Filtering: ${genre === 'all' ? 'All Titles' : genre.charAt(0).toUpperCase() + genre.slice(1)}`, 'info');
+  }
+
+  // ── SCROLL FADE IN ────────────────────────────────────────────
+  const fadeEls = document.querySelectorAll('.fade-in');
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  fadeEls.forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

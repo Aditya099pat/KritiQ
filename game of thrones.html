@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game of Thrones — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#top10" class="nav-link">Top 10</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<!-- DETAIL HERO -->
+<div class="detail-hero" style="--backdrop: url('https://m.media-amazon.com/images/M/MV5BMTNhMDJmNmYtNDQ5OS00ODdlLWE0ZDAtZTgyYTIwNDY3OTU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://m.media-amazon.com/images/M/MV5BMTNhMDJmNmYtNDQ5OS00ODdlLWE0ZDAtZTgyYTIwNDY3OTU3XkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Game of Thrones poster">
+    </div>
+    <div class="detail-info">
+      <h1>GAME OF THRONES</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb">
+          <div><div class="score-label">IMDB</div><div class="score-num">9.2</div></div>
+          <span style="color:var(--gold);font-size:22px">★</span>
+        </div>
+        <div class="score-rt">
+          <div><div class="score-label">Rotten Tomatoes</div><div class="score-num">89%</div></div>
+          <span style="font-size:18px">🍅</span>
+        </div>
+        <span class="detail-tag">2011–2019</span>
+        <span class="detail-tag">Fantasy · Drama</span>
+        <span class="detail-tag">TV-MA</span>
+        <span class="detail-tag">8 Seasons</span>
+        <span style="color:var(--gold);font-weight:700;font-size:14px">🏆 59 Emmy Awards</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIONS BAR -->
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()"><span>👍</span> Like <span id="likeCount">19.4K</span></button>
+  <button class="action-btn dislike" onclick="handleDislike()"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="handleShare()"><span>🔗</span> Share</button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;">
+    <span style="color:var(--gold);font-weight:700;">🏆 Most Awarded</span> TV Series in Emmy history
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="detail-body">
+  <div class="detail-grid">
+
+    <!-- MAIN -->
+    <div class="detail-main">
+
+      <!-- TRAILER -->
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/KPLWWIOCOOQ?si=NVMDxH0N2DzjMs55" title="Game of Thrones Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <!-- STORYLINE -->
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">
+          In the Seven Kingdoms of Westeros, nine noble houses wage war for the Iron Throne — a seat of power that corrupts all who seek it. The Starks of the North cling to honor in a world where honor gets you killed. The Lannisters rule with gold and ruthlessness. Across the Narrow Sea, the exiled Daenerys Targaryen rises from slave markets to command armies and dragons.
+          <br><br>
+          Meanwhile, beyond the great Wall at the edge of the world, an ancient supernatural threat known as the White Walkers stirs for the first time in thousands of years. Game of Thrones is a story of shifting alliances, brutal power, shattered innocence, and the fundamental question: what does it truly cost to sit on the throne? A landmark of prestige television that redefined what was possible on screen.
+        </p>
+      </div>
+
+      <!-- SEASONS TIMELINE -->
+      <div class="content-block">
+        <div class="block-title">Season Guide</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--line);">
+            <div style="width:38px;height:38px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;">S1</div>
+            <div><div style="font-weight:700;font-size:14px;">Season 1 — Winter is Coming</div><div style="font-size:12px;color:var(--text3);">2011 · 10 episodes · IMDB 9.1</div></div>
+            <div style="margin-left:auto;color:var(--gold);font-size:13px;font-weight:700;">★ 9.1</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--line);">
+            <div style="width:38px;height:38px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;">S2</div>
+            <div><div style="font-weight:700;font-size:14px;">Season 2 — The War of the Five Kings</div><div style="font-size:12px;color:var(--text3);">2012 · 10 episodes · IMDB 9.0</div></div>
+            <div style="margin-left:auto;color:var(--gold);font-size:13px;font-weight:700;">★ 9.0</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--line);">
+            <div style="width:38px;height:38px;border-radius:8px;background:var(--accent);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;">S3</div>
+            <div><div style="font-weight:700;font-size:14px;">Season 3 — The Red Wedding</div><div style="font-size:12px;color:var(--text3);">2013 · 10 episodes · IMDB 9.2</div></div>
+            <div style="margin-left:auto;color:var(--gold);font-size:13px;font-weight:700;">★ 9.2</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:12px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--line);">
+            <div style="width:38px;height:38px;border-radius:8px;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px;flex-shrink:0;color:var(--text3);">S8</div>
+            <div><div style="font-weight:700;font-size:14px;">Season 8 — The Final Season</div><div style="font-size:12px;color:var(--text3);">2019 · 6 episodes · IMDB 6.4</div></div>
+            <div style="margin-left:auto;color:var(--text3);font-size:13px;font-weight:700;">★ 6.4</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAST -->
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://tinyurl.com/4t63y4jf" alt="Emilia Clarke" onerror="this.src='https://ui-avatars.com/api/?name=EC&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Emilia Clarke</div>
+            <div class="cast-role">Daenerys Targaryen</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://tinyurl.com/3rkvxe9m" alt="Kit Harington" onerror="this.src='https://ui-avatars.com/api/?name=KH&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Kit Harington</div>
+            <div class="cast-role">Jon Snow</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://tinyurl.com/yc6u9mu3" alt="Jack Gleeson" onerror="this.src='https://ui-avatars.com/api/?name=JG&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Jack Gleeson</div>
+            <div class="cast-role">Joffrey Baratheon</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://tinyurl.com/3bnretbh" alt="Sophie Turner" onerror="this.src='https://ui-avatars.com/api/?name=ST&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Sophie Turner</div>
+            <div class="cast-role">Sansa Stark</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://tinyurl.com/33m22pah" alt="Lena Headey" onerror="this.src='https://ui-avatars.com/api/?name=LH&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Lena Headey</div>
+            <div class="cast-role">Cersei Lannister</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://tinyurl.com/bdv3btr3" alt="Iwan Rheon" onerror="this.src='https://ui-avatars.com/api/?name=IR&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Iwan Rheon</div>
+            <div class="cast-role">Ramsay Bolton</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=PD&background=1a1d2e&color=fff" alt="Peter Dinklage"></div>
+            <div class="cast-name">Peter Dinklage</div>
+            <div class="cast-role">Tyrion Lannister</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=NS&background=1a1d2e&color=fff" alt="Nikolaj Coster-Waldau"></div>
+            <div class="cast-name">Nikolaj C-W</div>
+            <div class="cast-role">Jaime Lannister</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEWS -->
+      <div class="content-block">
+        <div class="block-title">Community Reviews</div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="Share your thoughts on Game of Thrones... which season was your favourite?"></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker">
+              <span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span>
+              <span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span>
+              <span onclick="setStars(5)">★</span>
+            </div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">S</div>
+              <div><div class="review-name">Samir K.</div><div class="review-stars">★★★★★</div></div>
+              <span class="review-time">2 weeks ago</span>
+            </div>
+            <p class="review-text">Seasons 1–6 are a masterpiece of storytelling. The Red Wedding episode (S3E9) is one of the most shocking hours of TV ever made. Peter Dinklage deserved every Emmy.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (203)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#d97706,#f59e0b)">N</div>
+              <div><div class="review-name">Nisha P.</div><div class="review-stars">★★★★<span style="color:var(--surface3)">★</span></div></div>
+              <span class="review-time">1 month ago</span>
+            </div>
+            <p class="review-text">The first 6 seasons are among the greatest television ever made. Season 8 was a let-down, but the journey to get there was extraordinary. Watch it for Seasons 1–6 alone.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (87)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="detail-sidebar">
+
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb">
+            <div class="score-label">IMDB</div>
+            <div class="score-big">9.2</div>
+            <div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+            <div class="score-sub">2.3M votes</div>
+          </div>
+          <div class="rating-box rt">
+            <div class="score-label">Rotten Tomatoes</div>
+            <div class="score-big">89%</div>
+            <div class="score-sub">Certified Fresh 🍅</div>
+            <div class="score-sub" style="margin-top:4px">84% Audience</div>
+          </div>
+        </div>
+        <div style="margin-top:8px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Rating Distribution</div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span class="rating-bar-label">5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:71%"></div></div><span class="rating-bar-count">71%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:16%;background:var(--green)"></div></div><span class="rating-bar-count">16%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:6%;background:#888"></div></div><span class="rating-bar-count">6%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:4%;background:#555"></div></div><span class="rating-bar-count">4%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:3%;background:#333"></div></div><span class="rating-bar-count">3%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Show Info</div>
+        <table class="info-table">
+          <tr><td>Created by</td><td>D.B. Weiss & D. Benioff</td></tr>
+          <tr><td>Based on</td><td>A Song of Ice and Fire by George R.R. Martin</td></tr>
+          <tr><td>Network</td><td>HBO</td></tr>
+          <tr><td>Seasons</td><td>8</td></tr>
+          <tr><td>Episodes</td><td>73 (avg 57 min)</td></tr>
+          <tr><td>Premiered</td><td>April 17, 2011</td></tr>
+          <tr><td>Ended</td><td>May 19, 2019</td></tr>
+          <tr><td>Emmy Awards</td><td>59 wins (record)</td></tr>
+          <tr><td>Budget/Ep</td><td>~$15 million (S8)</td></tr>
+        </table>
+        <div style="margin-top:16px">
+          <div class="genre-tags">
+            <span class="genre-tag">Fantasy</span>
+            <span class="genre-tag">Drama</span>
+            <span class="genre-tag">War</span>
+            <span class="genre-tag">Political</span>
+            <span class="genre-tag">Epic</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Spin-offs</div>
+        <div style="display:flex;flex-direction:column;gap:8px;">
+          <div style="padding:12px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);font-size:13px;">
+            <div style="font-weight:700;color:var(--text)">House of the Dragon</div>
+            <div style="color:var(--green);font-size:11px;font-weight:600;margin-top:2px;">NOW STREAMING · S2 out</div>
+          </div>
+          <div style="padding:12px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);font-size:13px;">
+            <div style="font-weight:700;color:var(--text)">A Knight of the Seven Kingdoms</div>
+            <div style="color:var(--blue);font-size:11px;font-weight:600;margin-top:2px;">COMING SOON · 2025</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+  function updateAuthUI() { const user = localStorage.getItem('loggedInUser'); if (user) { document.getElementById('loginBtn').style.display='none'; document.getElementById('userPill').style.display='flex'; document.getElementById('userName').textContent=user; document.getElementById('userAvatar').textContent=user[0].toUpperCase(); } }
+  function handleLogout() { localStorage.removeItem('loggedInUser'); location.reload(); }
+  updateAuthUI();
+  function showToast(msg, type='info') { const c=document.getElementById('toastContainer'); const t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg; c.appendChild(t); setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(20px)'; setTimeout(()=>t.remove(),400); },3000); }
+  function toggleWishlist() { const wl=JSON.parse(localStorage.getItem('wishlist')||'[]'); const title='Game of Thrones'; const btn=document.getElementById('wishlistBtn'); const idx=wl.indexOf(title); if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed','info');}localStorage.setItem('wishlist',JSON.stringify(wl)); }
+  let liked=false;
+  function handleLike(){liked=!liked;document.getElementById('likeBtn').style.background=liked?'rgba(33,208,122,0.3)':'';showToast(liked?'👍 Liked!':'Like removed','success');}
+  function handleDislike(){showToast('👎 Noted.','info');}
+  function handleShare(){navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success');}
+  let selectedStars=0;
+  function setStars(n){selectedStars=n;document.querySelectorAll('#starPicker span').forEach((s,i)=>s.classList.toggle('lit',i<n));document.getElementById('starLabel').textContent=['','Terrible','Poor','Average','Good','Excellent'][n];}
+  function postReview(){const input=document.getElementById('reviewInput');const list=document.getElementById('reviewList');if(!input.value.trim()){showToast('Write a review first','error');return;}if(!selectedStars){showToast('Please rate first','error');return;}const user=localStorage.getItem('loggedInUser')||'Anonymous';const starsHTML='★'.repeat(selectedStars)+`<span style="color:var(--surface3)">${'★'.repeat(5-selectedStars)}</span>`;const item=document.createElement('div');item.className='review-item';item.innerHTML=`<div class="review-header"><div class="review-avatar">${user[0].toUpperCase()}</div><div><div class="review-name">${user}</div><div class="review-stars">${starsHTML}</div></div><span class="review-time">Just now</span></div><p class="review-text">${input.value}</p><div class="review-footer"><span class="review-react">👍 Helpful (0)</span></div>`;list.insertBefore(item,list.firstChild);input.value='';selectedStars=0;setStars(0);showToast('✅ Review posted!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('Game of Thrones')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+</script>
+</body>
+</html>

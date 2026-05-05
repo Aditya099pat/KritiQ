@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agneepath — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="toast-container" id="toastContainer"></div>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#boxoffice" class="nav-link">Box Office</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<div class="detail-hero" style="--backdrop: url('https://upload.wikimedia.org/wikipedia/en/thumb/0/08/Agneepath_poster.jpg/250px-Agneepath_poster.jpg')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/08/Agneepath_poster.jpg/250px-Agneepath_poster.jpg" alt="Agneepath poster">
+    </div>
+    <div class="detail-info">
+      <h1>AGNEEPATH</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb"><div><div class="score-label">IMDB</div><div class="score-num">7.6</div></div><span style="color:var(--gold);font-size:22px">★</span></div>
+        <div class="score-rt"><div><div class="score-label">Box Office</div><div class="score-num">₹252Cr</div></div><span style="font-size:18px">💰</span></div>
+        <span class="detail-tag">2012</span>
+        <span class="detail-tag">Hindi · Action · Drama</span>
+        <span class="detail-tag">U/A</span>
+        <span class="detail-tag">2h 54m</span>
+        <span style="color:var(--gold);font-weight:700;font-size:14px">🏆 Filmfare Best Film</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()"><span>👍</span> Like <span id="likeCount">7.8K</span></button>
+  <button class="action-btn dislike" onclick="handleDislike()"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="handleShare()"><span>🔗</span> Share</button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;"><span style="color:var(--gold);font-weight:700;">🏆 Filmfare Best Film 2013</span></div>
+</div>
+
+<div class="detail-body">
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/2BggaM_bC_w?si=TRhAB1P2U_jIAdzv" title="Agneepath Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">
+          Agneepath — meaning "the path of fire" — is a story of a son's burning vow of revenge. Young Vijay Deenanath Chauhan watches in horror as his beloved father, a respected village teacher, is falsely accused and brutally lynched by the drug lord Kancha Cheena, who then seizes control of their village, Mandwa.
+          <br><br>
+          Forced to flee with his mother and newborn sister to the slums of Mumbai, Vijay grows up with one consuming purpose: to return to Mandwa and destroy Kancha. He rises through the city's criminal underworld with ruthless intelligence, carving a path through gang lords and corrupt officials — all while trying to protect his family and keep alive his father's legacy of dignity. Hrithik Roshan delivers the performance of his career, and Sanjay Dutt is absolutely terrifying as Kancha Cheena — one of Bollywood's greatest villains.
+        </p>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/hritik-roshan" alt="Hrithik Roshan" onerror="this.src='https://ui-avatars.com/api/?name=HR&background=e50914&color=fff'"></div><div class="cast-name">Hrithik Roshan</div><div class="cast-role">Vijay Deenanath Chauhan</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/Priyanka-Chopra01" alt="Priyanka Chopra" onerror="this.src='https://ui-avatars.com/api/?name=PC&background=1a1d2e&color=fff'"></div><div class="cast-name">Priyanka Chopra</div><div class="cast-role">Kaali Gawde</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/Sanjay-Dutt" alt="Sanjay Dutt" onerror="this.src='https://ui-avatars.com/api/?name=SD&background=1a1d2e&color=fff'"></div><div class="cast-name">Sanjay Dutt</div><div class="cast-role">Kancha Cheena</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/rishi-kapoor" alt="Rishi Kapoor" onerror="this.src='https://ui-avatars.com/api/?name=RK&background=1a1d2e&color=fff'"></div><div class="cast-name">Rishi Kapoor</div><div class="cast-role">Rauf Lala</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=ZW&background=1a1d2e&color=fff"></div><div class="cast-name">Zarina Wahab</div><div class="cast-role">Suhasini Chauhan</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=KK&background=1a1d2e&color=fff"></div><div class="cast-name">Katrina Kaif</div><div class="cast-role">Special Appearance</div></div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Write Your Review</div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="Vijay Deenanath Chauhan — what did you think of this remake?"></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker"><span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span></div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#e50914,#ff6b6b)">V</div>
+              <div><div class="review-name">Vikram T.</div><div class="review-stars">★★★★★</div></div>
+              <span class="review-time">2 weeks ago</span>
+            </div>
+            <p class="review-text">Hrithik is OUTSTANDING. The way he carries every scene — the rage, the grief, the love for his family — is mesmerising. Sanjay Dutt as Kancha is one of the most menacing villains in Bollywood history. Goosebumps every time.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (93)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-sidebar">
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb"><div class="score-label">IMDB</div><div class="score-big">7.6</div><div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span></div><div class="score-sub">68K votes</div></div>
+          <div class="rating-box rt" style="background:rgba(245,197,24,0.07);border-color:rgba(245,197,24,0.2)"><div class="score-label" style="color:var(--gold2)">Box Office India</div><div class="score-big" style="color:var(--gold);">₹252Cr</div><div class="score-sub">All India</div><div class="score-sub" style="margin-top:4px">Budget: ₹75Cr</div></div>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Film Info</div>
+        <table class="info-table">
+          <tr><td>Director</td><td>Karan Malhotra</td></tr>
+          <tr><td>Producer</td><td>Karan Johar / Dharma</td></tr>
+          <tr><td>Original</td><td>Agneepath (1990) — Amitabh Bachchan</td></tr>
+          <tr><td>Music</td><td>Ajay-Atul</td></tr>
+          <tr><td>Runtime</td><td>174 minutes</td></tr>
+          <tr><td>Released</td><td>January 26, 2012</td></tr>
+          <tr><td>Awards</td><td>Filmfare Best Film, Best Actor</td></tr>
+        </table>
+        <div style="margin-top:16px"><div class="genre-tags"><span class="genre-tag">Hindi</span><span class="genre-tag">Action</span><span class="genre-tag">Revenge</span><span class="genre-tag">Drama</span><span class="genre-tag">Bollywood</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+<script>
+  const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>40));
+  function updateAuthUI(){const user=localStorage.getItem('loggedInUser');if(user){document.getElementById('loginBtn').style.display='none';document.getElementById('userPill').style.display='flex';document.getElementById('userName').textContent=user;document.getElementById('userAvatar').textContent=user[0].toUpperCase();}}
+  function handleLogout(){localStorage.removeItem('loggedInUser');location.reload();}
+  updateAuthUI();
+  function showToast(msg,type='info'){const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(20px)';setTimeout(()=>t.remove(),400);},3000);}
+  function toggleWishlist(){const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');const title='Agneepath';const btn=document.getElementById('wishlistBtn');const idx=wl.indexOf(title);if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed','info');}localStorage.setItem('wishlist',JSON.stringify(wl));}
+  let liked=false;function handleLike(){liked=!liked;document.getElementById('likeBtn').style.background=liked?'rgba(33,208,122,0.3)':'';showToast(liked?'👍 Liked!':'Like removed','success');}
+  function handleDislike(){showToast('👎 Noted.','info');}function handleShare(){navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success');}
+  let sel=0;function setStars(n){sel=n;document.querySelectorAll('#starPicker span').forEach((s,i)=>s.classList.toggle('lit',i<n));document.getElementById('starLabel').textContent=['','Terrible','Poor','Average','Good','Excellent'][n];}
+  function postReview(){const input=document.getElementById('reviewInput');const list=document.getElementById('reviewList');if(!input.value.trim()){showToast('Write a review first','error');return;}if(!sel){showToast('Please rate first','error');return;}const user=localStorage.getItem('loggedInUser')||'Anonymous';const sh='★'.repeat(sel)+`<span style="color:var(--surface3)">${'★'.repeat(5-sel)}</span>`;const item=document.createElement('div');item.className='review-item';item.innerHTML=`<div class="review-header"><div class="review-avatar">${user[0].toUpperCase()}</div><div><div class="review-name">${user}</div><div class="review-stars">${sh}</div></div><span class="review-time">Just now</span></div><p class="review-text">${input.value}</p><div class="review-footer"><span class="review-react">👍 Helpful (0)</span></div>`;list.insertBefore(item,list.firstChild);input.value='';sel=0;setStars(0);showToast('✅ Review posted!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('Agneepath')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+</script>
+</body>
+</html>

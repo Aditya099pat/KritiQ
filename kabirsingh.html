@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kabir Singh — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#boxoffice" class="nav-link">Box Office</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<div class="detail-hero" style="--backdrop: url('https://m.media-amazon.com/images/M/MV5BYzE5ZWQ2MTMtZjJjYy00NWY4LTk2ZWItM2I3M2FhMzhlOWFlXkEyXkFqcGc@._V1_.jpg')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://m.media-amazon.com/images/M/MV5BYzE5ZWQ2MTMtZjJjYy00NWY4LTk2ZWItM2I3M2FhMzhlOWFlXkEyXkFqcGc@._V1_.jpg" alt="Kabir Singh poster">
+    </div>
+    <div class="detail-info">
+      <h1>KABIR SINGH</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb"><div><div class="score-label">IMDB</div><div class="score-num">7.0</div></div><span style="color:var(--gold);font-size:22px">★</span></div>
+        <div class="score-rt"><div><div class="score-label">Rotten Tomatoes</div><div class="score-num">27%</div></div><span style="font-size:18px">🍅</span></div>
+        <span class="detail-tag">2019</span>
+        <span class="detail-tag">Hindi · Drama · Romance</span>
+        <span class="detail-tag">U/A</span>
+        <span class="detail-tag">2h 53m</span>
+        <span style="color:var(--gold);font-weight:700;font-size:14px">💰 ₹379 Cr India Box Office</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()"><span>👍</span> Like <span id="likeCount">9.1K</span></button>
+  <button class="action-btn dislike" onclick="handleDislike()"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="handleShare()"><span>🔗</span> Share</button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;"><span style="color:var(--gold);font-weight:700;">🏆 Filmfare Best Actor</span> — Shahid Kapoor 2020</div>
+</div>
+
+<div class="detail-body">
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/zEX0nU8rvAw?si=7C6VJ-ms5WIA-1Na" title="Kabir Singh Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">
+          Kabir Singh is Delhi's most brilliant and most volatile surgeon. At the top of his medical college, feared and admired in equal measure, he is also a man of unchecked rage and reckless abandon. When he falls fiercely in love with Preeti, a quiet first-year student, their bond is intense and all-consuming.
+          <br><br>
+          But when Preeti's family forces her into an arranged marriage, Kabir spirals — into alcohol, drugs, and self-destruction on a level that threatens to consume everything he has built. The film, a remake of the Telugu hit Arjun Reddy, is a raw, divisive portrait of obsessive love and self-destruction. Shahid Kapoor delivers a career-defining performance, and Kiara Advani brings quiet strength to Preeti. An enormous box office success, it sparked as much debate as it did acclaim.
+        </p>
+      </div>
+
+      <!-- BOX OFFICE PERFORMANCE -->
+      <div class="content-block">
+        <div class="block-title">🎬 Box Office Performance</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="padding:14px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);">
+            <div style="font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Opening Weekend</div>
+            <div style="font-size:20px;font-weight:700;color:var(--gold);">₹70.83 Cr</div>
+          </div>
+          <div style="padding:14px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);">
+            <div style="font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">India Total</div>
+            <div style="font-size:20px;font-weight:700;color:var(--gold);">₹379 Cr</div>
+          </div>
+          <div style="padding:14px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);">
+            <div style="font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Worldwide</div>
+            <div style="font-size:20px;font-weight:700;color:var(--green);">₹414 Cr</div>
+          </div>
+          <div style="padding:14px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);">
+            <div style="font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:0.06em;margin-bottom:4px;">Budget</div>
+            <div style="font-size:20px;font-weight:700;color:var(--text2);">₹60 Cr</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcTAPTsdVwwtzk3QpK0OO6jBVD_8T202YQaz4DL394jI2PYbXORH1VfIQvHbtUA4edUoSsvPnW0-reycp6fjlHmD5yASDVwyuIDniJFkHwUe" alt="Shahid Kapoor" onerror="this.src='https://ui-avatars.com/api/?name=SK&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Shahid Kapoor</div>
+            <div class="cast-role">Kabir Singh</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcR8TE0Yow64QZuKDVDX1AyuG-we-dSFJ6imXziwzFkfH3KUz_i4VIU_7S3O4cqWf6FSsnykNEMyXfGBtT87ZBMdlP_vZgrXsshLgR5aYe1w" alt="Kiara Advani" onerror="this.src='https://ui-avatars.com/api/?name=KA&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Kiara Advani</div>
+            <div class="cast-role">Preeti Sikka</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://static.toiimg.com/thumb/msid-114311075,width-400,resizemode-4/114311075.jpg" alt="Soham Majumdar" onerror="this.src='https://ui-avatars.com/api/?name=SM&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Soham Majumdar</div>
+            <div class="cast-role">Shiva</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcS9T73CzkYr7q-m61BnTIOIDZVKxDNXbd1thG5lQuSjGEev2AonzgGivz2R7SZAudw7x9KFwwpgJN4-LjRK0A7C_oMa27K7k2wm2K3Ywc41" alt="Arjan Bajwa" onerror="this.src='https://ui-avatars.com/api/?name=AB&background=1a1d2e&color=fff'"></div>
+            <div class="cast-name">Arjan Bajwa</div>
+            <div class="cast-role">Jia's Fiancé</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=SS&background=1a1d2e&color=fff"></div>
+            <div class="cast-name">Suresh Oberoi</div>
+            <div class="cast-role">Dr. S.S. Singh</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=AD&background=1a1d2e&color=fff"></div>
+            <div class="cast-name">Adil Hussain</div>
+            <div class="cast-role">Preeti's Father</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Write Your Review</div>
+        <div style="padding:12px;background:rgba(229,9,20,0.07);border:1px solid rgba(229,9,20,0.2);border-radius:var(--radius);margin-bottom:16px;font-size:13px;color:var(--text2);">
+          ⚡ <strong>Debate Alert:</strong> Kabir Singh divided audiences and critics. Critics pointed to problematic portrayals; audiences loved Shahid's raw performance. What did you think?
+        </div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="Was Kabir Singh a masterpiece or problematic? Share your honest take..."></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker"><span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span></div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">R</div>
+              <div><div class="review-name">Rahul D.</div><div class="review-stars">★★★★★</div></div>
+              <span class="review-time">1 week ago</span>
+            </div>
+            <p class="review-text">Shahid Kapoor gives the performance of his life. Yes the character is flawed and controversial, but that's the point — it's a portrait of a broken man, not a role model. Brilliant filmmaking.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (61)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#059669,#10b981)">P</div>
+              <div><div class="review-name">Priya S.</div><div class="review-stars">★★★<span style="color:var(--surface3)">★★</span></div></div>
+              <span class="review-time">2 weeks ago</span>
+            </div>
+            <p class="review-text">Kiara Advani is luminous and Shahid is electrifying, but the film glorifies toxic behaviour a little too uncritically. That said, the music is sublime and the performances unforgettable.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (38)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-sidebar">
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb"><div class="score-label">IMDB</div><div class="score-big">7.0</div><div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span><span class="star half">★</span></div><div class="score-sub">90K votes</div></div>
+          <div class="rating-box rt"><div class="score-label">Rotten Tomatoes</div><div class="score-big">27%</div><div style="font-size:18px;margin:6px 0;">🤢</div><div class="score-sub">78% Audience</div></div>
+        </div>
+        <div style="margin-top:10px;padding:10px;background:rgba(245,197,24,0.08);border:1px solid rgba(245,197,24,0.2);border-radius:var(--radius);font-size:12px;color:var(--text2);">
+          💡 <strong>Audience vs Critics:</strong> RT critics gave it 27%, but audiences gave 78% — one of the biggest divides in Bollywood history.
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Film Info</div>
+        <table class="info-table">
+          <tr><td>Director</td><td>Sandeep Vanga Reddy</td></tr>
+          <tr><td>Written by</td><td>Sandeep Vanga Reddy</td></tr>
+          <tr><td>Original</td><td>Arjun Reddy (Telugu, 2017)</td></tr>
+          <tr><td>Studio</td><td>T-Series Films</td></tr>
+          <tr><td>Runtime</td><td>173 minutes</td></tr>
+          <tr><td>Released</td><td>June 21, 2019</td></tr>
+          <tr><td>Music by</td><td>Mithoon, Sachet-Parampara</td></tr>
+          <tr><td>Awards</td><td>Filmfare Best Actor (Shahid)</td></tr>
+        </table>
+        <div style="margin-top:16px"><div class="genre-tags"><span class="genre-tag">Hindi</span><span class="genre-tag">Drama</span><span class="genre-tag">Romance</span><span class="genre-tag">Controversial</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+  function updateAuthUI() { const user = localStorage.getItem('loggedInUser'); if (user) { document.getElementById('loginBtn').style.display='none'; document.getElementById('userPill').style.display='flex'; document.getElementById('userName').textContent=user; document.getElementById('userAvatar').textContent=user[0].toUpperCase(); } }
+  function handleLogout() { localStorage.removeItem('loggedInUser'); location.reload(); }
+  updateAuthUI();
+  function showToast(msg, type='info') { const c=document.getElementById('toastContainer'); const t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg; c.appendChild(t); setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(20px)'; setTimeout(()=>t.remove(),400); },3000); }
+  function toggleWishlist() { const wl=JSON.parse(localStorage.getItem('wishlist')||'[]'); const title='Kabir Singh'; const btn=document.getElementById('wishlistBtn'); const idx=wl.indexOf(title); if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed','info');}localStorage.setItem('wishlist',JSON.stringify(wl)); }
+  let liked=false;
+  function handleLike(){liked=!liked;document.getElementById('likeBtn').style.background=liked?'rgba(33,208,122,0.3)':'';showToast(liked?'👍 Liked!':'Like removed','success');}
+  function handleDislike(){showToast('👎 Noted.','info');}
+  function handleShare(){navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success');}
+  let selectedStars=0;
+  function setStars(n){selectedStars=n;document.querySelectorAll('#starPicker span').forEach((s,i)=>s.classList.toggle('lit',i<n));document.getElementById('starLabel').textContent=['','Terrible','Poor','Average','Good','Excellent'][n];}
+  function postReview(){const input=document.getElementById('reviewInput');const list=document.getElementById('reviewList');if(!input.value.trim()){showToast('Write a review first','error');return;}if(!selectedStars){showToast('Please rate first','error');return;}const user=localStorage.getItem('loggedInUser')||'Anonymous';const starsHTML='★'.repeat(selectedStars)+`<span style="color:var(--surface3)">${'★'.repeat(5-selectedStars)}</span>`;const item=document.createElement('div');item.className='review-item';item.innerHTML=`<div class="review-header"><div class="review-avatar">${user[0].toUpperCase()}</div><div><div class="review-name">${user}</div><div class="review-stars">${starsHTML}</div></div><span class="review-time">Just now</span></div><p class="review-text">${input.value}</p><div class="review-footer"><span class="review-react">👍 Helpful (0)</span></div>`;list.insertBefore(item,list.firstChild);input.value='';selectedStars=0;setStars(0);showToast('✅ Review posted!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('Kabir Singh')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+</script>
+</body>
+</html>

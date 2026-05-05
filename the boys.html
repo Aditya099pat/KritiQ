@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Boys — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast-container" id="toastContainer"></div>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#top10" class="nav-link">Series</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+        <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+      </svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn">
+      <button class="btn-login">Sign In</button>
+    </a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<!-- DETAIL HERO -->
+<div class="detail-hero" style="--backdrop: url('https://cdnb.artstation.com/p/assets/images/images/031/128/313/medium/mayank-kumarr-2.jpg?1602685224')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://cdnb.artstation.com/p/assets/images/images/031/128/313/medium/mayank-kumarr-2.jpg?1602685224" alt="The Boys poster">
+    </div>
+    <div class="detail-info">
+      <h1>THE BOYS</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb">
+          <div>
+            <div class="score-label">IMDB</div>
+            <div class="score-num">8.6</div>
+          </div>
+          <span style="color:var(--gold);font-size:22px">★</span>
+        </div>
+        <div class="score-rt">
+          <div>
+            <div class="score-label">Rotten Tomatoes</div>
+            <div class="score-num">87%</div>
+          </div>
+          <span style="font-size:18px">🍅</span>
+        </div>
+        <span class="detail-tag">2019–Present</span>
+        <span class="detail-tag">Action · Satire</span>
+        <span class="detail-tag">TV-MA</span>
+        <span class="detail-tag">Series</span>
+        <span style="color:var(--green);font-weight:700;font-size:14px">97% Match</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ACTIONS BAR -->
+<div style="padding: 20px clamp(20px,6vw,96px); border-bottom: 1px solid var(--line); display:flex; gap:12px; flex-wrap:wrap; align-items:center; background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()">
+    <span>🔖</span> Add to Wishlist
+  </button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()">
+    <span>👍</span> Like <span id="likeCount">2.4K</span>
+  </button>
+  <button class="action-btn dislike" id="dislikeBtn" onclick="handleDislike()">
+    <span>👎</span> Dislike
+  </button>
+  <button class="action-btn share" onclick="handleShare()">
+    <span>🔗</span> Share
+  </button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;">
+    <span style="color:var(--green);font-weight:700;">↑ Trending #7</span> on KritiQ today
+  </div>
+</div>
+
+<!-- BODY -->
+<div class="detail-body">
+  <div class="detail-grid">
+
+    <!-- MAIN -->
+    <div class="detail-main">
+
+      <!-- TRAILER -->
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/5SKP1_F7ReE?si=72nkBcNSSp6Dt_3Y" title="The Boys Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <!-- STORYLINE -->
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">
+          The Boys is set in a world where superheroes are celebrated celebrities, worshipped by the public and owned by Vought International — a mega-corporation hiding their corruption behind polished PR. When Hughie Campbell's girlfriend is brutally killed by a careless speedster, he's dragged into a covert team of vigilantes led by the ruthless Billy Butcher, a man with a deep personal vendetta against Homelander, the world's most powerful — and most dangerous — superhero.
+          <br><br>
+          Together, The Boys wage a guerrilla war against the Seven, exposing the truth behind the capes. The show is a biting satire on celebrity culture, corporate greed, media manipulation, and the cult of power. Dark, brutal, and wickedly funny — it asks what happens when those meant to protect us are the ones we need protecting from.
+        </p>
+      </div>
+
+      <!-- CAST -->
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card">
+            <div class="cast-avatar">
+              <img src="https://tinyurl.com/4nsn3jwz" alt="Antony Starr" onerror="this.src='https://ui-avatars.com/api/?name=AS&background=e50914&color=fff'">
+            </div>
+            <div class="cast-name">Antony Starr</div>
+            <div class="cast-role">Homelander</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar">
+              <img src="https://tinyurl.com/4mvy8fkk" alt="Karl Urban" onerror="this.src='https://ui-avatars.com/api/?name=KU&background=1a1d2e&color=fff'">
+            </div>
+            <div class="cast-name">Karl Urban</div>
+            <div class="cast-role">Billy Butcher</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar">
+              <img src="https://tinyurl.com/3yvc68nc" alt="Erin Moriarty" onerror="this.src='https://ui-avatars.com/api/?name=EM&background=1a1d2e&color=fff'">
+            </div>
+            <div class="cast-name">Erin Moriarty</div>
+            <div class="cast-role">Annie January</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar">
+              <img src="https://tinyurl.com/3vjeudzk" alt="Chace Crawford" onerror="this.src='https://ui-avatars.com/api/?name=CC&background=1a1d2e&color=fff'">
+            </div>
+            <div class="cast-name">Chace Crawford</div>
+            <div class="cast-role">The Deep</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar">
+              <img src="https://tinyurl.com/yr7mabdh" alt="Laz Alonso" onerror="this.src='https://ui-avatars.com/api/?name=LA&background=1a1d2e&color=fff'">
+            </div>
+            <div class="cast-name">Laz Alonso</div>
+            <div class="cast-role">Mother's Milk</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar">
+              <img src="https://tinyurl.com/3y8v36s9" alt="Karen Fukuhara" onerror="this.src='https://ui-avatars.com/api/?name=KF&background=1a1d2e&color=fff'">
+            </div>
+            <div class="cast-name">Karen Fukuhara</div>
+            <div class="cast-role">Kimiko</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar">
+              <img src="https://tinyurl.com/2ffkcd5f" alt="Nathan Mitchell" onerror="this.src='https://ui-avatars.com/api/?name=NM&background=1a1d2e&color=fff'">
+            </div>
+            <div class="cast-name">Nathan Mitchell</div>
+            <div class="cast-role">Black Noir</div>
+          </div>
+          <div class="cast-card">
+            <div class="cast-avatar">
+              <img src="https://ui-avatars.com/api/?name=JH&background=1a1d2e&color=fff" alt="Jack Quaid">
+            </div>
+            <div class="cast-name">Jack Quaid</div>
+            <div class="cast-role">Hughie Campbell</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- REVIEWS SECTION -->
+      <div class="content-block">
+        <div class="block-title">Community Reviews</div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="Share your thoughts on The Boys... (spoiler-free please!)"></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker">
+              <span onclick="setStars(1)">★</span>
+              <span onclick="setStars(2)">★</span>
+              <span onclick="setStars(3)">★</span>
+              <span onclick="setStars(4)">★</span>
+              <span onclick="setStars(5)">★</span>
+            </div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <!-- Seed reviews -->
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar">R</div>
+              <div>
+                <div class="review-name">Rohit M.</div>
+                <div class="review-stars">★★★★★</div>
+              </div>
+              <span class="review-time">2 days ago</span>
+            </div>
+            <p class="review-text">One of the best shows ever made. Antony Starr is absolutely terrifying as Homelander. The satire cuts deep and the action is insane. Season 3 pushed every boundary.</p>
+            <div class="review-footer">
+              <span class="review-react">👍 Helpful (42)</span>
+              <span class="review-react">💬 Reply</span>
+            </div>
+          </div>
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">P</div>
+              <div>
+                <div class="review-name">Priya K.</div>
+                <div class="review-stars">★★★★<span style="color:var(--surface3)">★</span></div>
+              </div>
+              <span class="review-time">1 week ago</span>
+            </div>
+            <p class="review-text">Brutally honest satire on superhero culture. Not for the faint-hearted but every episode has you thinking. Karl Urban is perfect as Butcher.</p>
+            <div class="review-footer">
+              <span class="review-react">👍 Helpful (28)</span>
+              <span class="review-react">💬 Reply</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="detail-sidebar">
+
+      <!-- RATINGS -->
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb">
+            <div class="score-label">IMDB</div>
+            <div class="score-big">8.6</div>
+            <div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span></div>
+            <div class="score-sub">198K votes</div>
+          </div>
+          <div class="rating-box rt">
+            <div class="score-label">Rotten Tomatoes</div>
+            <div class="score-big">87%</div>
+            <div class="score-sub">Certified Fresh 🍅</div>
+            <div class="score-sub" style="margin-top:4px">92% Audience</div>
+          </div>
+        </div>
+        <div style="margin-top:8px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Rating Distribution</div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span class="rating-bar-label">5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:68%"></div></div><span class="rating-bar-count">68%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:20%;background:var(--green)"></div></div><span class="rating-bar-count">20%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:7%;background:#888"></div></div><span class="rating-bar-count">7%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:3%;background:#555"></div></div><span class="rating-bar-count">3%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:2%;background:#333"></div></div><span class="rating-bar-count">2%</span></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SHOW INFO -->
+      <div class="content-block">
+        <div class="block-title">Show Info</div>
+        <table class="info-table">
+          <tr><td>Created by</td><td>Eric Kripke</td></tr>
+          <tr><td>Network</td><td>Amazon Prime Video</td></tr>
+          <tr><td>Seasons</td><td>4 + Spin-off</td></tr>
+          <tr><td>Episodes</td><td>32 (avg 50 min)</td></tr>
+          <tr><td>Status</td><td><span style="color:var(--green);font-weight:700;">Ongoing</span></td></tr>
+          <tr><td>Premiered</td><td>July 26, 2019</td></tr>
+          <tr><td>Country</td><td>United States</td></tr>
+          <tr><td>Language</td><td>English</td></tr>
+          <tr><td>Based on</td><td>DC Comics by Garth Ennis</td></tr>
+        </table>
+        <div style="margin-top:16px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:8px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Genres</div>
+          <div class="genre-tags">
+            <span class="genre-tag">Action</span>
+            <span class="genre-tag">Satire</span>
+            <span class="genre-tag">Superhero</span>
+            <span class="genre-tag">Dark Comedy</span>
+            <span class="genre-tag">Thriller</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHERE TO WATCH -->
+      <div class="content-block">
+        <div class="block-title">Where to Watch</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div style="display:flex;align-items:center;gap:12px;padding:12px;background:var(--surface2);border:1px solid var(--line);border-radius:var(--radius);cursor:pointer;transition:var(--transition);"
+               onmouseover="this.style.background='var(--surface3)'" onmouseout="this.style.background='var(--surface2)'">
+            <div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#00a8e0,#0064a5);display:flex;align-items:center;justify-content:center;font-size:18px;">📺</div>
+            <div><div style="font-weight:700;font-size:14px">Amazon Prime Video</div><div style="font-size:12px;color:var(--green)">Available to stream</div></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+
+<script>
+  // Navbar scroll
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+
+  // Auth
+  function updateAuthUI() {
+    const user = localStorage.getItem('loggedInUser');
+    const loginBtn = document.getElementById('loginBtn');
+    const userPill = document.getElementById('userPill');
+    if (user) {
+      loginBtn.style.display = 'none';
+      userPill.style.display = 'flex';
+      document.getElementById('userName').textContent = user;
+      document.getElementById('userAvatar').textContent = user[0].toUpperCase();
+    }
+  }
+  function handleLogout() { localStorage.removeItem('loggedInUser'); location.reload(); }
+  updateAuthUI();
+
+  // Toast
+  function showToast(msg, type='info') {
+    const c = document.getElementById('toastContainer');
+    const t = document.createElement('div');
+    t.className = `toast ${type}`;
+    t.textContent = msg;
+    c.appendChild(t);
+    setTimeout(() => { t.style.opacity='0'; t.style.transform='translateX(20px)'; setTimeout(()=>t.remove(),400); }, 3000);
+  }
+
+  // Wishlist
+  function toggleWishlist() {
+    const wl = JSON.parse(localStorage.getItem('wishlist')||'[]');
+    const title = 'The Boys';
+    const btn = document.getElementById('wishlistBtn');
+    const idx = wl.indexOf(title);
+    if (idx === -1) {
+      wl.push(title);
+      btn.classList.add('active');
+      btn.innerHTML = '<span>✅</span> In Wishlist';
+      showToast(`"${title}" added to Wishlist`, 'success');
+    } else {
+      wl.splice(idx,1);
+      btn.classList.remove('active');
+      btn.innerHTML = '<span>🔖</span> Add to Wishlist';
+      showToast(`"${title}" removed from Wishlist`, 'info');
+    }
+    localStorage.setItem('wishlist', JSON.stringify(wl));
+  }
+
+  // Like / Dislike
+  let liked = false, disliked = false;
+  let likeCount = 2400;
+  function handleLike() {
+    liked = !liked;
+    if (liked) { disliked = false; document.getElementById('dislikeBtn').classList.remove('active'); }
+    likeCount += liked ? 1 : -1;
+    document.getElementById('likeCount').textContent = liked ? (likeCount >= 1000 ? (likeCount/1000).toFixed(1)+'K' : likeCount) : '2.4K';
+    document.getElementById('likeBtn').style.background = liked ? 'rgba(33,208,122,0.3)' : '';
+    showToast(liked ? '👍 You liked this!' : 'Like removed', 'success');
+  }
+  function handleDislike() {
+    disliked = !disliked;
+    if (disliked) { liked = false; document.getElementById('likeBtn').style.background=''; document.getElementById('likeCount').textContent='2.4K'; }
+    document.getElementById('dislikeBtn').style.background = disliked ? 'rgba(239,68,68,0.3)' : '';
+    showToast(disliked ? '👎 Noted.' : 'Dislike removed', 'info');
+  }
+  function handleShare() {
+    navigator.clipboard?.writeText(window.location.href);
+    showToast('🔗 Link copied to clipboard!', 'success');
+  }
+
+  // Stars
+  let selectedStars = 0;
+  function setStars(n) {
+    selectedStars = n;
+    const stars = document.querySelectorAll('#starPicker span');
+    stars.forEach((s, i) => s.classList.toggle('lit', i < n));
+    document.getElementById('starLabel').textContent = ['','Terrible','Poor','Average','Good','Excellent'][n];
+  }
+
+  // Reviews
+  const names = ['Alex R.','Sneha P.','Dev M.','Anita K.','Raj S.','Meera T.'];
+  const gradients = ['linear-gradient(135deg,#e50914,#ff6b6b)','linear-gradient(135deg,#7c3aed,#4f46e5)','linear-gradient(135deg,#059669,#10b981)','linear-gradient(135deg,#d97706,#f59e0b)'];
+
+  function postReview() {
+    const input = document.getElementById('reviewInput');
+    const list = document.getElementById('reviewList');
+    if (!input.value.trim()) { showToast('Please write a review first', 'error'); return; }
+    if (selectedStars === 0) { showToast('Please select a star rating', 'error'); return; }
+    const user = localStorage.getItem('loggedInUser') || names[Math.floor(Math.random()*names.length)];
+    const starsHTML = '★'.repeat(selectedStars) + `<span style="color:var(--surface3)">${'★'.repeat(5-selectedStars)}</span>`;
+    const grad = gradients[Math.floor(Math.random()*gradients.length)];
+    const item = document.createElement('div');
+    item.className = 'review-item';
+    item.innerHTML = `
+      <div class="review-header">
+        <div class="review-avatar" style="background:${grad}">${user[0].toUpperCase()}</div>
+        <div><div class="review-name">${user}</div><div class="review-stars">${starsHTML}</div></div>
+        <span class="review-time">Just now</span>
+      </div>
+      <p class="review-text">${input.value}</p>
+      <div class="review-footer">
+        <span class="review-react">👍 Helpful (0)</span>
+        <span class="review-react">💬 Reply</span>
+      </div>`;
+    list.insertBefore(item, list.firstChild);
+    input.value = '';
+    selectedStars = 0;
+    setStars(0);
+    showToast('✅ Review posted!', 'success');
+  }
+
+  // Load wishlist state
+  const wl = JSON.parse(localStorage.getItem('wishlist')||'[]');
+  if (wl.includes('The Boys')) {
+    document.getElementById('wishlistBtn').classList.add('active');
+    document.getElementById('wishlistBtn').innerHTML = '<span>✅</span> In Wishlist';
+  }
+</script>
+</body>
+</html>

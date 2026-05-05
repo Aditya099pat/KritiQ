@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Create Account — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    .auth-page {
+      background:
+        radial-gradient(circle at 80% 10%, rgba(229,9,20,0.12), transparent 40%),
+        radial-gradient(circle at 15% 85%, rgba(124,58,237,0.08), transparent 35%),
+        var(--bg);
+    }
+    .strength-bar { height:4px; border-radius:2px; background:rgba(255,255,255,0.08); margin-top:8px; overflow:hidden; }
+    .strength-fill { height:100%; border-radius:2px; transition: width 0.3s, background 0.3s; }
+    .strength-label { font-size:11px; margin-top:4px; font-weight:600; }
+    .requirement {
+      display:flex; align-items:center; gap:6px;
+      font-size:12px; color:var(--text3); margin-top:4px; transition:color 0.2s;
+    }
+    .requirement.met { color:var(--green); }
+    .requirement::before { content:'○'; font-size:10px; }
+    .requirement.met::before { content:'●'; }
+  </style>
+</head>
+<body class="auth-page">
+
+<div class="auth-card">
+  <div class="auth-logo">KRITI<span>Q</span></div>
+  <p class="auth-subtitle">Join 140K+ movie lovers — free forever</p>
+
+  <h2>Create your account</h2>
+
+  <div class="form-group">
+    <label for="newUsername">Username</label>
+    <input type="text" id="newUsername" placeholder="Choose a username" autocomplete="username"
+           oninput="checkUsername(this)">
+    <div id="usernameMsg" style="font-size:12px;margin-top:4px;display:none;"></div>
+  </div>
+
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input type="email" id="email" placeholder="your@email.com" autocomplete="email"
+           oninput="validateEmail(this)">
+  </div>
+
+  <div class="form-group">
+    <label for="newPassword">Password</label>
+    <input type="password" id="newPassword" placeholder="Create a strong password"
+           autocomplete="new-password" oninput="checkStrength(this)">
+    <div class="strength-bar"><div class="strength-fill" id="strengthFill" style="width:0"></div></div>
+    <div class="strength-label" id="strengthLabel" style="color:var(--text3)"></div>
+    <div id="requirements" style="margin-top:6px;display:none">
+      <div class="requirement" id="req-len">At least 8 characters</div>
+      <div class="requirement" id="req-num">Contains a number</div>
+      <div class="requirement" id="req-special">Contains a special character</div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <label for="confirmPassword">Confirm Password</label>
+    <input type="password" id="confirmPassword" placeholder="Confirm your password"
+           autocomplete="new-password" oninput="checkMatch(this)">
+    <div id="matchMsg" style="font-size:12px;margin-top:4px;display:none;"></div>
+  </div>
+
+  <div class="error-msg" id="errorMsg" style="background:rgba(229,9,20,0.1);border:1px solid rgba(229,9,20,0.3);border-radius:var(--radius);padding:10px 14px;font-size:13px;color:#ff6b6b;display:none;margin-top:8px;"></div>
+
+  <button class="btn-auth" onclick="handleSignup()" style="margin-top:14px">Create Account</button>
+
+  <p class="auth-link">Already have an account? <a href="login page.html">Sign In</a></p>
+</div>
+
+<script>
+  function checkUsername(input) {
+    const msg = document.getElementById('usernameMsg');
+    const val = input.value.trim();
+    if (val.length < 3) {
+      msg.style.display = 'block'; msg.style.color = 'var(--accent2)';
+      msg.textContent = 'Username must be at least 3 characters';
+      input.style.borderColor = 'rgba(229,9,20,0.4)';
+    } else {
+      msg.style.display = 'block'; msg.style.color = 'var(--green)';
+      msg.textContent = '✓ Username available';
+      input.style.borderColor = 'rgba(33,208,122,0.4)';
+    }
+  }
+
+  function validateEmail(input) {
+    const ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value);
+    input.style.borderColor = input.value ? (ok ? 'rgba(33,208,122,0.4)' : 'rgba(229,9,20,0.4)') : '';
+  }
+
+  function checkStrength(input) {
+    const val = input.value;
+    document.getElementById('requirements').style.display = val ? 'block' : 'none';
+    const hasLen = val.length >= 8;
+    const hasNum = /\d/.test(val);
+    const hasSpec = /[^a-zA-Z0-9]/.test(val);
+    document.getElementById('req-len').className = 'requirement' + (hasLen ? ' met' : '');
+    document.getElementById('req-num').className = 'requirement' + (hasNum ? ' met' : '');
+    document.getElementById('req-special').className = 'requirement' + (hasSpec ? ' met' : '');
+    const score = [hasLen, hasNum, hasSpec].filter(Boolean).length;
+    const configs = [
+      { w:'0%', c:'transparent', label:'' },
+      { w:'33%', c:'var(--accent)', label:'Weak' },
+      { w:'66%', c:'var(--gold)', label:'Fair' },
+      { w:'100%', c:'var(--green)', label:'Strong' }
+    ];
+    const cfg = configs[score];
+    const fill = document.getElementById('strengthFill');
+    fill.style.width = cfg.w; fill.style.background = cfg.c;
+    const lbl = document.getElementById('strengthLabel');
+    lbl.textContent = cfg.label; lbl.style.color = cfg.c;
+  }
+
+  function checkMatch(input) {
+    const match = input.value === document.getElementById('newPassword').value;
+    const msg = document.getElementById('matchMsg');
+    if (!input.value) { msg.style.display='none'; input.style.borderColor=''; return; }
+    msg.style.display = 'block';
+    if (match) { msg.style.color='var(--green)'; msg.textContent='✓ Passwords match'; input.style.borderColor='rgba(33,208,122,0.4)'; }
+    else { msg.style.color='var(--accent2)'; msg.textContent='✗ Passwords do not match'; input.style.borderColor='rgba(229,9,20,0.4)'; }
+  }
+
+  function handleSignup() {
+    const user = document.getElementById('newUsername').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const pass = document.getElementById('newPassword').value;
+    const confirm = document.getElementById('confirmPassword').value;
+    const err = document.getElementById('errorMsg');
+
+    if (!user || !email || !pass || !confirm) {
+      err.style.display='block'; err.textContent='⚠️ Please fill in all fields.'; return;
+    }
+    if (user.length < 3) {
+      err.style.display='block'; err.textContent='⚠️ Username must be at least 3 characters.'; return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      err.style.display='block'; err.textContent='⚠️ Please enter a valid email address.'; return;
+    }
+    if (pass !== confirm) {
+      err.style.display='block'; err.textContent='❌ Passwords do not match.'; return;
+    }
+    if (pass.length < 6) {
+      err.style.display='block'; err.textContent='⚠️ Password must be at least 6 characters.'; return;
+    }
+
+    err.style.display = 'none';
+    localStorage.setItem('loggedInUser', user);
+    const btn = document.querySelector('.btn-auth');
+    btn.textContent = '✅ Account created! Redirecting...';
+    btn.style.background = 'var(--green)';
+    setTimeout(() => { window.location.href = 'index.html'; }, 1200);
+  }
+
+  document.addEventListener('keydown', e => { if (e.key === 'Enter') handleSignup(); });
+</script>
+</body>
+</html>

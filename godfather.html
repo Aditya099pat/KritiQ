@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Godfather — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="toast-container" id="toastContainer"></div>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#top10" class="nav-link">Series</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<div class="detail-hero" style="--backdrop: url('https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcQAY2xsJVIZxm3K0gNtOMr9CSCvLdr5kdo3V3pv2HMuUkTBhFzRe5-b8NDRmO1mt5S5Xp_YyQ" alt="The Godfather poster">
+    </div>
+    <div class="detail-info">
+      <h1>THE GODFATHER</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb"><div><div class="score-label">IMDB</div><div class="score-num">9.2</div></div><span style="color:var(--gold);font-size:22px">★</span></div>
+        <div class="score-rt"><div><div class="score-label">Rotten Tomatoes</div><div class="score-num">97%</div></div><span style="font-size:18px">🍅</span></div>
+        <span class="detail-tag">1972</span><span class="detail-tag">Crime · Drama</span>
+        <span class="detail-tag">R</span><span class="detail-tag">2h 55m</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" onclick="showToast('👍 Liked!','success')"><span>👍</span> Like 8.9K</button>
+  <button class="action-btn dislike" onclick="showToast('Noted.','info')"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success')"><span>🔗</span> Share</button>
+</div>
+
+<div class="detail-body">
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/sY1S34973zA" title="The Godfather Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">The aging patriarch of an organized crime dynasty transfers control of his clandestine empire to his reluctant son. When Vito Corleone narrowly survives an assassination attempt, youngest son Michael is drawn into the criminal underworld he once wanted to escape. A masterclass in storytelling, power, loyalty, and the corrupting influence of violence — The Godfather remains the definitive cinematic exploration of the American Dream's dark side. Francis Ford Coppola's opus changed cinema forever.</p>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=MP&background=1a1d2e&color=fff" alt="Marlon Brando"></div><div class="cast-name">Marlon Brando</div><div class="cast-role">Vito Corleone</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=AP&background=1a1d2e&color=fff" alt="Al Pacino"></div><div class="cast-name">Al Pacino</div><div class="cast-role">Michael Corleone</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=JC&background=1a1d2e&color=fff" alt="James Caan"></div><div class="cast-name">James Caan</div><div class="cast-role">Sonny Corleone</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=RD&background=1a1d2e&color=fff" alt="Robert Duvall"></div><div class="cast-name">Robert Duvall</div><div class="cast-role">Tom Hagen</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=DK&background=1a1d2e&color=fff" alt="Diane Keaton"></div><div class="cast-name">Diane Keaton</div><div class="cast-role">Kay Adams</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=TC&background=1a1d2e&color=fff" alt="Talia Shire"></div><div class="cast-name">Talia Shire</div><div class="cast-role">Connie Corleone</div></div>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Community Reviews</div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="What did you think of The Godfather?"></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker"><span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span></div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <div class="review-item"><div class="review-header"><div class="review-avatar">V</div><div><div class="review-name">Vikram S.</div><div class="review-stars">★★★★★</div></div><span class="review-time">3 days ago</span></div><p class="review-text">This is cinema at its absolute finest. Every single frame is art. Brando's performance is otherworldly. I've seen it 12 times and discover something new each time.</p><div class="review-footer"><span class="review-react">👍 Helpful (94)</span><span class="review-react">💬 Reply</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="detail-sidebar">
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb"><div class="score-label">IMDB</div><div class="score-big">9.2</div><div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><div class="score-sub">1.9M votes</div></div>
+          <div class="rating-box rt"><div class="score-label">Rotten Tomatoes</div><div class="score-big">97%</div><div class="score-sub">Certified Fresh 🍅</div></div>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Film Info</div>
+        <table class="info-table">
+          <tr><td>Director</td><td>Francis Ford Coppola</td></tr>
+          <tr><td>Written by</td><td>Mario Puzo, F.F. Coppola</td></tr>
+          <tr><td>Studio</td><td>Paramount Pictures</td></tr>
+          <tr><td>Runtime</td><td>175 minutes</td></tr>
+          <tr><td>Released</td><td>March 15, 1972</td></tr>
+          <tr><td>Box Office</td><td>$268.5M worldwide</td></tr>
+          <tr><td>Awards</td><td>3 Academy Awards</td></tr>
+          <tr><td>Language</td><td>English, Italian, Latin</td></tr>
+        </table>
+        <div style="margin-top:16px"><div class="genre-tags"><span class="genre-tag">Crime</span><span class="genre-tag">Drama</span><span class="genre-tag">Classic</span><span class="genre-tag">Mafia</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom"><span>© 2025 KritiQ.</span><a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a></div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+  function updateAuthUI() { const user = localStorage.getItem('loggedInUser'); if (user) { document.getElementById('loginBtn').style.display='none'; document.getElementById('userPill').style.display='flex'; document.getElementById('userName').textContent=user; document.getElementById('userAvatar').textContent=user[0].toUpperCase(); } }
+  function handleLogout() { localStorage.removeItem('loggedInUser'); location.reload(); }
+  updateAuthUI();
+  function showToast(msg,type='info') { const c=document.getElementById('toastContainer'); const t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg; c.appendChild(t); setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(20px)'; setTimeout(()=>t.remove(),400); },3000); }
+  function toggleWishlist() { const wl=JSON.parse(localStorage.getItem('wishlist')||'[]'); const title='The Godfather'; const btn=document.getElementById('wishlistBtn'); const idx=wl.indexOf(title); if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed from Wishlist','info');}localStorage.setItem('wishlist',JSON.stringify(wl)); }
+  let selectedStars=0;
+  function setStars(n){selectedStars=n;document.querySelectorAll('#starPicker span').forEach((s,i)=>s.classList.toggle('lit',i<n));document.getElementById('starLabel').textContent=['','Terrible','Poor','Average','Good','Excellent'][n];}
+  function postReview(){const input=document.getElementById('reviewInput');const list=document.getElementById('reviewList');if(!input.value.trim()){showToast('Write a review first','error');return;}if(!selectedStars){showToast('Please rate first','error');return;}const user=localStorage.getItem('loggedInUser')||'Anonymous';const starsHTML='★'.repeat(selectedStars)+`<span style="color:var(--surface3)">${'★'.repeat(5-selectedStars)}</span>`;const item=document.createElement('div');item.className='review-item';item.innerHTML=`<div class="review-header"><div class="review-avatar">${user[0].toUpperCase()}</div><div><div class="review-name">${user}</div><div class="review-stars">${starsHTML}</div></div><span class="review-time">Just now</span></div><p class="review-text">${input.value}</p><div class="review-footer"><span class="review-react">👍 Helpful (0)</span></div>`;list.insertBefore(item,list.firstChild);input.value='';selectedStars=0;setStars(0);showToast('✅ Review posted!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('The Godfather')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+</script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dune — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#top10" class="nav-link">Top 10</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<div class="detail-hero" style="--backdrop: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAgLc5w_OzCJrCBKulTcMiwvuFaDvzothe-w&s')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRAgLc5w_OzCJrCBKulTcMiwvuFaDvzothe-w&s" alt="Dune poster">
+    </div>
+    <div class="detail-info">
+      <h1>DUNE</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb"><div><div class="score-label">IMDB</div><div class="score-num">8.0</div></div><span style="color:var(--gold);font-size:22px">★</span></div>
+        <div class="score-rt"><div><div class="score-label">Rotten Tomatoes</div><div class="score-num">83%</div></div><span style="font-size:18px">🍅</span></div>
+        <span class="detail-tag">2021</span>
+        <span class="detail-tag">Sci-Fi · Adventure · Drama</span>
+        <span class="detail-tag">PG-13</span>
+        <span class="detail-tag">2h 35m</span>
+        <span style="color:var(--gold);font-weight:700;font-size:14px">🏆 6 Academy Awards</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()"><span>👍</span> Like <span id="likeCount">8.3K</span></button>
+  <button class="action-btn dislike" onclick="handleDislike()"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="handleShare()"><span>🔗</span> Share</button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;"><span style="color:var(--gold);font-weight:700;">🏆 6 Oscars</span> including Best Cinematography & Score</div>
+</div>
+
+<div class="detail-body">
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/n9xhJrPXop4?si=wClhVFL9RgfQD7Os" title="Dune Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <!-- DUNE SAGA TIMELINE -->
+      <div class="content-block">
+        <div class="block-title">The Dune Saga</div>
+        <div style="display:flex;flex-direction:column;gap:10px;">
+          <div style="display:flex;align-items:center;gap:14px;padding:14px;background:rgba(245,197,24,0.07);border-radius:var(--radius);border:1px solid rgba(245,197,24,0.2);">
+            <div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,var(--gold),#b8860b);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">I</div>
+            <div style="flex:1"><div style="font-weight:700;font-size:14px;">Dune: Part One <span style="color:var(--gold);font-size:12px;">← You are here</span></div><div style="font-size:12px;color:var(--text3);">2021 · 6 Oscars · IMDB 8.0 · $401M WW</div></div>
+            <div style="color:var(--gold);font-weight:700;">★ 8.0</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--line);">
+            <div style="width:40px;height:40px;border-radius:8px;background:linear-gradient(135deg,#e50914,#7c3aed);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;">II</div>
+            <div style="flex:1"><div style="font-weight:700;font-size:14px;">Dune: Part Two</div><div style="font-size:12px;color:var(--text3);">2024 · IMDB 8.5 · $711M WW</div></div>
+            <div style="color:var(--gold);font-weight:700;">★ 8.5</div>
+          </div>
+          <div style="display:flex;align-items:center;gap:14px;padding:14px;background:var(--surface2);border-radius:var(--radius);border:1px solid var(--line);">
+            <div style="width:40px;height:40px;border-radius:8px;background:var(--surface3);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;color:var(--text3);">III</div>
+            <div style="flex:1"><div style="font-weight:700;font-size:14px;">Dune: Messiah</div><div style="font-size:12px;color:var(--blue);font-weight:600;">In Production · 2026</div></div>
+            <div style="color:var(--text3);font-weight:700;">TBA</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">
+          Paul Atreides is the son of a noble family, a gifted young man who can see fragments of the future in his dreams. When House Atreides is given stewardship of Arrakis — the harsh desert planet that produces the universe's most precious substance, the spice Melange — it seems like an opportunity. It is a trap.
+          <br><br>
+          After betrayal destroys his family and casts him into the merciless desert, Paul must find his place among the Fremen — the fierce, blue-eyed natives who have survived Arrakis for generations. Guided by visions and the bond he forms with Chani, Paul begins to discover that his destiny may be larger — and more dangerous — than anything he imagined. Denis Villeneuve's adaptation of Frank Herbert's impossible novel is a triumph of scale and atmosphere.
+        </p>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/5n7hwebb" alt="Timothée Chalamet" onerror="this.src='https://ui-avatars.com/api/?name=TC&background=1a1d2e&color=fff'"></div><div class="cast-name">Timothée Chalamet</div><div class="cast-role">Paul Atreides</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/23dffmcr" alt="Zendaya" onerror="this.src='https://ui-avatars.com/api/?name=Z&background=1a1d2e&color=fff'"></div><div class="cast-name">Zendaya</div><div class="cast-role">Chani</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/5bzz3abd" alt="Rebecca Ferguson" onerror="this.src='https://ui-avatars.com/api/?name=RF&background=1a1d2e&color=fff'"></div><div class="cast-name">Rebecca Ferguson</div><div class="cast-role">Lady Jessica</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/32ttkuh9" alt="Oscar Isaac" onerror="this.src='https://ui-avatars.com/api/?name=OI&background=1a1d2e&color=fff'"></div><div class="cast-name">Oscar Isaac</div><div class="cast-role">Duke Leto Atreides</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=JB&background=1a1d2e&color=fff" alt="Josh Brolin"></div><div class="cast-name">Josh Brolin</div><div class="cast-role">Gurney Halleck</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=SB&background=1a1d2e&color=fff" alt="Stellan Skarsgård"></div><div class="cast-name">Stellan Skarsgård</div><div class="cast-role">Baron Harkonnen</div></div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Critics Reviews <span style="font-size:12px;color:var(--text3);font-weight:400;margin-left:6px;">Powered by TMDB</span></div>
+        <div id="apiReviews"><div style="color:var(--text3);font-size:14px;display:flex;align-items:center;gap:10px;"><div style="width:16px;height:16px;border:2px solid var(--accent);border-top-color:transparent;border-radius:50%;animation:spin 0.8s linear infinite;"></div>Loading reviews...</div></div>
+        <style>@keyframes spin{to{transform:rotate(360deg)}}</style>
+        <div class="block-title" style="margin-top:24px;">Write Your Review</div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="How did you find Dune? Worth the hype?"></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker"><span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span></div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#b8860b,#f5c518)">K</div>
+              <div><div class="review-name">Kartik A.</div><div class="review-stars">★★★★★</div></div>
+              <span class="review-time">5 days ago</span>
+            </div>
+            <p class="review-text">Villeneuve did the impossible. Dune was considered unfilmable for 50 years. The scale, the score by Hans Zimmer, the visuals — this is a cinematic event unlike anything else. Watch it loud.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (88)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-sidebar">
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb"><div class="score-label">IMDB</div><div class="score-big">8.0</div><div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span></div><div class="score-sub">790K votes</div></div>
+          <div class="rating-box rt"><div class="score-label">Rotten Tomatoes</div><div class="score-big">83%</div><div class="score-sub">Certified Fresh 🍅</div><div class="score-sub" style="margin-top:4px">90% Audience</div></div>
+        </div>
+        <div style="margin-top:8px">
+          <div style="font-size:12px;color:var(--text3);margin-bottom:10px;font-weight:600;text-transform:uppercase;letter-spacing:0.06em;">Rating Distribution</div>
+          <div class="rating-bars">
+            <div class="rating-bar-row"><span class="rating-bar-label">5★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:52%"></div></div><span class="rating-bar-count">52%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">4★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:28%;background:var(--green)"></div></div><span class="rating-bar-count">28%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">3★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:12%;background:#888"></div></div><span class="rating-bar-count">12%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">2★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:5%;background:#555"></div></div><span class="rating-bar-count">5%</span></div>
+            <div class="rating-bar-row"><span class="rating-bar-label">1★</span><div class="rating-bar-track"><div class="rating-bar-fill" style="width:3%;background:#333"></div></div><span class="rating-bar-count">3%</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Film Info</div>
+        <table class="info-table">
+          <tr><td>Director</td><td>Denis Villeneuve</td></tr>
+          <tr><td>Based on</td><td>Frank Herbert novel (1965)</td></tr>
+          <tr><td>Studio</td><td>Warner Bros. / Legendary</td></tr>
+          <tr><td>Runtime</td><td>155 minutes</td></tr>
+          <tr><td>Released</td><td>October 22, 2021</td></tr>
+          <tr><td>Box Office</td><td>$401M worldwide</td></tr>
+          <tr><td>Oscar wins</td><td>6 (Best Cinematography, Score, etc.)</td></tr>
+          <tr><td>Music by</td><td>Hans Zimmer</td></tr>
+        </table>
+        <div style="margin-top:16px"><div class="genre-tags"><span class="genre-tag">Sci-Fi</span><span class="genre-tag">Epic</span><span class="genre-tag">Adventure</span><span class="genre-tag">Political</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+  function updateAuthUI() { const user = localStorage.getItem('loggedInUser'); if (user) { document.getElementById('loginBtn').style.display='none'; document.getElementById('userPill').style.display='flex'; document.getElementById('userName').textContent=user; document.getElementById('userAvatar').textContent=user[0].toUpperCase(); } }
+  function handleLogout() { localStorage.removeItem('loggedInUser'); location.reload(); }
+  updateAuthUI();
+  function showToast(msg, type='info') { const c=document.getElementById('toastContainer'); const t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg; c.appendChild(t); setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(20px)'; setTimeout(()=>t.remove(),400); },3000); }
+  function toggleWishlist() { const wl=JSON.parse(localStorage.getItem('wishlist')||'[]'); const title='Dune'; const btn=document.getElementById('wishlistBtn'); const idx=wl.indexOf(title); if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed','info');}localStorage.setItem('wishlist',JSON.stringify(wl)); }
+  let liked=false;
+  function handleLike(){liked=!liked;document.getElementById('likeBtn').style.background=liked?'rgba(33,208,122,0.3)':'';showToast(liked?'👍 Liked!':'Like removed','success');}
+  function handleDislike(){showToast('👎 Noted.','info');}
+  function handleShare(){navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success');}
+  let selectedStars=0;
+  function setStars(n){selectedStars=n;document.querySelectorAll('#starPicker span').forEach((s,i)=>s.classList.toggle('lit',i<n));document.getElementById('starLabel').textContent=['','Terrible','Poor','Average','Good','Excellent'][n];}
+  function postReview(){const input=document.getElementById('reviewInput');const list=document.getElementById('reviewList');if(!input.value.trim()){showToast('Write a review first','error');return;}if(!selectedStars){showToast('Please rate first','error');return;}const user=localStorage.getItem('loggedInUser')||'Anonymous';const starsHTML='★'.repeat(selectedStars)+`<span style="color:var(--surface3)">${'★'.repeat(5-selectedStars)}</span>`;const item=document.createElement('div');item.className='review-item';item.innerHTML=`<div class="review-header"><div class="review-avatar">${user[0].toUpperCase()}</div><div><div class="review-name">${user}</div><div class="review-stars">${starsHTML}</div></div><span class="review-time">Just now</span></div><p class="review-text">${input.value}</p><div class="review-footer"><span class="review-react">👍 Helpful (0)</span></div>`;list.insertBefore(item,list.firstChild);input.value='';selectedStars=0;setStars(0);showToast('✅ Review posted!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('Dune')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+  fetch('https://api.themoviedb.org/3/movie/438631/reviews?api_key=cf6af7eb73de4f74e6bfbba4cd69e5ca&language=en-US')
+    .then(r=>r.json()).then(data=>{const c=document.getElementById('apiReviews');if(!data.results?.length){c.innerHTML='<p style="color:var(--text3);font-size:14px;">No critic reviews available.</p>';return;}c.innerHTML=data.results.slice(0,3).map(r=>`<div class="review-item" style="margin-bottom:14px"><div class="review-header"><div class="review-avatar" style="background:linear-gradient(135deg,#0064a5,#00a8e0)">${r.author[0].toUpperCase()}</div><div><div class="review-name">${r.author}</div><div style="font-size:11px;color:var(--blue);font-weight:600;">TMDB Critic</div></div><span class="review-time">${new Date(r.created_at).toLocaleDateString('en-IN',{month:'short',year:'numeric'})}</span></div><p class="review-text">${r.content.substring(0,280)}${r.content.length>280?'...':''}</p></div>`).join('');}).catch(()=>{document.getElementById('apiReviews').innerHTML='<p style="color:var(--text3);font-size:14px;">Could not load reviews.</p>';});
+</script>
+</body>
+</html>

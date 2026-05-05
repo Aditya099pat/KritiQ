@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kho Gaye Hum Kahan — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="toast-container" id="toastContainer"></div>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#boxoffice" class="nav-link">Box Office</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<div class="detail-hero" style="--backdrop: url('https://m.media-amazon.com/images/M/MV5BMTg2MGUwZmItOThkMC00MzBhLThkMTMtNjkxNTk0ZDk3ZjVlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://m.media-amazon.com/images/M/MV5BMTg2MGUwZmItOThkMC00MzBhLThkMTMtNjkxNTk0ZDk3ZjVlXkEyXkFqcGc@._V1_FMjpg_UX1000_.jpg" alt="Kho Gaye Hum Kahan poster">
+    </div>
+    <div class="detail-info">
+      <h1>KHO GAYE HUM KAHAN</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb"><div><div class="score-label">IMDB</div><div class="score-num">7.4</div></div><span style="color:var(--gold);font-size:22px">★</span></div>
+        <div class="score-rt"><div><div class="score-label">Rotten Tomatoes</div><div class="score-num">93%</div></div><span style="font-size:18px">🍅</span></div>
+        <span class="detail-tag">2023</span>
+        <span class="detail-tag">Hindi · Drama · Social</span>
+        <span class="detail-tag">U/A</span>
+        <span class="detail-tag">2h 10m</span>
+        <span style="color:var(--green);font-weight:700;font-size:14px">📱 Netflix Original</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()"><span>👍</span> Like <span id="likeCount">5.6K</span></button>
+  <button class="action-btn dislike" onclick="handleDislike()"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="handleShare()"><span>🔗</span> Share</button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;"><span style="color:var(--green);font-weight:700;">📱 #1 in India</span> on Netflix at release</div>
+</div>
+
+<div class="detail-body">
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/E1da2YxROaw?si=9pQ5wSCobnAXaxYq" title="Kho Gaye Hum Kahan Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">
+          Mumbai, the present. Ahana, Imaad, and Neil — three best friends from college — are navigating their mid-twenties with all the chaos and confusion that entails. Ahana is a fitness influencer who filters her real life through a perfectly curated Instagram feed, hiding her loneliness behind likes and followers. Imaad is a DJ still carrying a heartbreak he can't admit to, using Tinder and music to fill the void. Neil, the most grounded of the three, finds himself in a relationship with a woman who exists only as a social media presence to his friends.
+          <br><br>
+          Kho Gaye Hum Kahan is one of the most honest films about how social media shapes and distorts our real relationships, identities, and sense of self. Director Arjun Varain Singh crafts a warm but unflinching portrait of a generation that is hyperconnected and yet profoundly lonely. The three central performances are beautifully nuanced, and the film's love for Mumbai comes through in every frame.
+        </p>
+      </div>
+
+      <!-- SOCIAL MEDIA THEMES -->
+      <div class="content-block">
+        <div class="block-title">📱 What the Film is Really About</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+          <div style="padding:14px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:var(--radius);"><div style="font-weight:700;font-size:13px;color:#a78bfa;margin-bottom:4px;">📸 Instagram Culture</div><div style="font-size:12px;color:var(--text2);">The performance of happiness vs. the reality</div></div>
+          <div style="padding:14px;background:rgba(33,208,122,0.07);border:1px solid rgba(33,208,122,0.2);border-radius:var(--radius);"><div style="font-weight:700;font-size:13px;color:var(--green);margin-bottom:4px;">💬 Real Friendships</div><div style="font-size:12px;color:var(--text2);">What survives when you put the phone down</div></div>
+          <div style="padding:14px;background:rgba(229,9,20,0.07);border:1px solid rgba(229,9,20,0.2);border-radius:var(--radius);"><div style="font-weight:700;font-size:13px;color:var(--accent2);margin-bottom:4px;">💔 Modern Loneliness</div><div style="font-size:12px;color:var(--text2);">Millions of followers, no one to call at 3am</div></div>
+          <div style="padding:14px;background:rgba(1,180,228,0.07);border:1px solid rgba(1,180,228,0.2);border-radius:var(--radius);"><div style="font-weight:700;font-size:13px;color:var(--blue);margin-bottom:4px;">🏙️ Mumbai</div><div style="font-size:12px;color:var(--text2);">The city as character — vibrant, overwhelming</div></div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/ananya-pandey" alt="Ananya Panday" onerror="this.src='https://ui-avatars.com/api/?name=AP&background=1a1d2e&color=fff'"></div><div class="cast-name">Ananya Panday</div><div class="cast-role">Ahana Anand</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/siddhant-chaturvedi" alt="Siddhant Chaturvedi" onerror="this.src='https://ui-avatars.com/api/?name=SC&background=1a1d2e&color=fff'"></div><div class="cast-name">Siddhant Chaturvedi</div><div class="cast-role">Imaad Shah</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/adarsh-gaurav" alt="Adarsh Gourav" onerror="this.src='https://ui-avatars.com/api/?name=AG&background=1a1d2e&color=fff'"></div><div class="cast-name">Adarsh Gourav</div><div class="cast-role">Neil Bandyopadhyay</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/kalki-coechlin" alt="Kalki Koechlin" onerror="this.src='https://ui-avatars.com/api/?name=KK&background=1a1d2e&color=fff'"></div><div class="cast-name">Kalki Koechlin</div><div class="cast-role">Natasha</div></div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Write Your Review</div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="Did this film make you put your phone down? Share your thoughts..."></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker"><span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span></div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#7c3aed,#a78bfa)">S</div>
+              <div><div class="review-name">Shreya M.</div><div class="review-stars">★★★★★</div></div>
+              <span class="review-time">5 days ago</span>
+            </div>
+            <p class="review-text">This film hit me like a truck. I saw myself in all three characters simultaneously. Ananya Panday surprised me completely — she was raw and real. The scene where she breaks down and asks "but am I enough?" wrecked me.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (78)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-sidebar">
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb"><div class="score-label">IMDB</div><div class="score-big">7.4</div><div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span><span class="star half">★</span></div><div class="score-sub">22K votes</div></div>
+          <div class="rating-box rt"><div class="score-label">Rotten Tomatoes</div><div class="score-big">93%</div><div class="score-sub">Certified Fresh 🍅</div><div class="score-sub" style="margin-top:4px">80% Audience</div></div>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Film Info</div>
+        <table class="info-table">
+          <tr><td>Director</td><td>Arjun Varain Singh</td></tr>
+          <tr><td>Written by</td><td>Zoya Akhtar, Reema Kagti</td></tr>
+          <tr><td>Platform</td><td>Netflix Original</td></tr>
+          <tr><td>Runtime</td><td>130 minutes</td></tr>
+          <tr><td>Released</td><td>December 26, 2023</td></tr>
+          <tr><td>Setting</td><td>Mumbai, Present Day</td></tr>
+          <tr><td>Language</td><td>Hindi / English</td></tr>
+        </table>
+        <div style="margin-top:16px"><div class="genre-tags"><span class="genre-tag">Hindi</span><span class="genre-tag">Drama</span><span class="genre-tag">Social Media</span><span class="genre-tag">Coming-of-Age</span></div></div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Where to Watch</div>
+        <div style="padding:14px;background:rgba(229,9,20,0.08);border:1px solid rgba(229,9,20,0.2);border-radius:var(--radius);display:flex;align-items:center;gap:12px;">
+          <div style="font-size:28px">🎬</div>
+          <div><div style="font-weight:700;font-size:14px;">Netflix</div><div style="font-size:12px;color:var(--green);font-weight:600;">Available to Stream Now</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+<script>
+  const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>40));
+  function updateAuthUI(){const user=localStorage.getItem('loggedInUser');if(user){document.getElementById('loginBtn').style.display='none';document.getElementById('userPill').style.display='flex';document.getElementById('userName').textContent=user;document.getElementById('userAvatar').textContent=user[0].toUpperCase();}}
+  function handleLogout(){localStorage.removeItem('loggedInUser');location.reload();}
+  updateAuthUI();
+  function showToast(msg,type='info'){const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(20px)';setTimeout(()=>t.remove(),400);},3000);}
+  function toggleWishlist(){const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');const title='Kho Gaye Hum Kahan';const btn=document.getElementById('wishlistBtn');const idx=wl.indexOf(title);if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed','info');}localStorage.setItem('wishlist',JSON.stringify(wl));}
+  let liked=false;function handleLike(){liked=!liked;document.getElementById('likeBtn').style.background=liked?'rgba(33,208,122,0.3)':'';showToast(liked?'👍 Liked!':'Like removed','success');}
+  function handleDislike(){showToast('👎 Noted.','info');}function handleShare(){navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success');}
+  let sel=0;function setStars(n){sel=n;document.querySelectorAll('#starPicker span').forEach((s,i)=>s.classList.toggle('lit',i<n));document.getElementById('starLabel').textContent=['','Terrible','Poor','Average','Good','Excellent'][n];}
+  function postReview(){const input=document.getElementById('reviewInput');const list=document.getElementById('reviewList');if(!input.value.trim()){showToast('Write a review first','error');return;}if(!sel){showToast('Please rate first','error');return;}const user=localStorage.getItem('loggedInUser')||'Anonymous';const sh='★'.repeat(sel)+`<span style="color:var(--surface3)">${'★'.repeat(5-sel)}</span>`;const item=document.createElement('div');item.className='review-item';item.innerHTML=`<div class="review-header"><div class="review-avatar">${user[0].toUpperCase()}</div><div><div class="review-name">${user}</div><div class="review-stars">${sh}</div></div><span class="review-time">Just now</span></div><p class="review-text">${input.value}</p><div class="review-footer"><span class="review-react">👍 Helpful (0)</span></div>`;list.insertBefore(item,list.firstChild);input.value='';sel=0;setStars(0);showToast('✅ Review posted!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('Kho Gaye Hum Kahan')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+</script>
+</body>
+</html>

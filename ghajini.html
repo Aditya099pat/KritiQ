@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ghajini — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="toast-container" id="toastContainer"></div>
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#boxoffice" class="nav-link">Box Office</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<div class="detail-hero" style="--backdrop: url('https://stat4.bollywoodhungama.in/wp-content/uploads/2016/03/Ghajjni-306x393.jpg')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://stat4.bollywoodhungama.in/wp-content/uploads/2016/03/Ghajjni-306x393.jpg" alt="Ghajini poster">
+    </div>
+    <div class="detail-info">
+      <h1>GHAJINI</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb"><div><div class="score-label">IMDB</div><div class="score-num">7.4</div></div><span style="color:var(--gold);font-size:22px">★</span></div>
+        <div class="score-rt"><div><div class="score-label">Box Office</div><div class="score-num">₹200Cr</div></div><span style="font-size:18px">💰</span></div>
+        <span class="detail-tag">2008</span>
+        <span class="detail-tag">Hindi · Action · Thriller</span>
+        <span class="detail-tag">U/A</span>
+        <span class="detail-tag">3h 4m</span>
+        <span style="color:var(--gold);font-weight:700;font-size:14px">🏆 First ₹200Cr Bollywood Film</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()"><span>👍</span> Like <span id="likeCount">10.3K</span></button>
+  <button class="action-btn dislike" onclick="handleDislike()"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="handleShare()"><span>🔗</span> Share</button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;"><span style="color:var(--gold);font-weight:700;">🏆 Historic</span> — First Bollywood film to cross ₹200 Crore</div>
+</div>
+
+<div class="detail-body">
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/j_DshRUOm-o?si=7RtVuoNanUq_AYFm" title="Ghajini Trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Storyline</div>
+        <p class="storyline-text">
+          Sanjay Singhania was once one of Mumbai's most powerful businessmen — handsome, ambitious, and about to fall in love. Kalpana, an aspiring model with a heart of gold, enters his world by accident and turns it upside down. Their love story is tender, funny, and full of life. Then, in one brutal night, it ends. Kalpana is killed by the feared crime lord Ghajini Dharmatma, and Sanjay is left with a traumatic brain injury — anterograde amnesia. He cannot form new memories. Every 15 minutes, his mind resets.
+          <br><br>
+          But Sanjay has built a system. Photographs pinned to his body. Polaroids everywhere. Tattoos of key facts on his skin. And one mission: find and destroy Ghajini. The film's non-linear structure — jumping between the romance and the revenge — is brilliantly executed by A.R. Murugadoss. Aamir Khan's physical transformation became iconic, and the film marked a turning point for Bollywood action cinema.
+        </p>
+      </div>
+
+      <!-- MEMORY MECHANIC EXPLAINER -->
+      <div class="content-block">
+        <div class="block-title">🧠 The Memory Condition</div>
+        <div style="padding:16px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);border-radius:var(--radius);">
+          <div style="font-weight:700;font-size:14px;color:#a78bfa;margin-bottom:8px;">Anterograde Amnesia</div>
+          <p style="font-size:13px;color:var(--text2);line-height:1.7;">The condition depicted in the film — the inability to form new memories after a traumatic brain injury — is a real neurological disorder. Sanjay's technique of using Polaroids and tattoos to track his mission mirrors real coping strategies used by amnesia patients. The film drew comparisons to Christopher Nolan's Memento (2000), which uses a similar premise.</p>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Cast</div>
+        <div class="cast-grid">
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/aamir-khan-02" alt="Aamir Khan" onerror="this.src='https://ui-avatars.com/api/?name=AK&background=e50914&color=fff'"></div><div class="cast-name">Aamir Khan</div><div class="cast-role">Sanjay Singhania</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/asin01" alt="Asin" onerror="this.src='https://ui-avatars.com/api/?name=AS&background=1a1d2e&color=fff'"></div><div class="cast-name">Asin Thottumkal</div><div class="cast-role">Kalpana</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/jiah-khan" alt="Jiah Khan" onerror="this.src='https://ui-avatars.com/api/?name=JK&background=1a1d2e&color=fff'"></div><div class="cast-name">Jiah Khan</div><div class="cast-role">Sunita</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://tinyurl.com/pradeep-rawat" alt="Pradeep Rawat" onerror="this.src='https://ui-avatars.com/api/?name=PR&background=1a1d2e&color=fff'"></div><div class="cast-name">Pradeep Rawat</div><div class="cast-role">Ghajini Dharmatma</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=RS&background=1a1d2e&color=fff"></div><div class="cast-name">Riyaz Khan</div><div class="cast-role">Laxman</div></div>
+          <div class="cast-card"><div class="cast-avatar"><img src="https://ui-avatars.com/api/?name=TA&background=1a1d2e&color=fff"></div><div class="cast-name">Tinnu Anand</div><div class="cast-role">Inspector Arjun Rathod</div></div>
+        </div>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Write Your Review</div>
+        <div class="review-form">
+          <textarea id="reviewInput" placeholder="Did Ghajini live up to the hype? Share your memories..."></textarea>
+          <div class="review-actions">
+            <div class="star-picker" id="starPicker"><span onclick="setStars(1)">★</span><span onclick="setStars(2)">★</span><span onclick="setStars(3)">★</span><span onclick="setStars(4)">★</span><span onclick="setStars(5)">★</span></div>
+            <span style="font-size:12px;color:var(--text3);margin-left:6px" id="starLabel">Tap to rate</span>
+            <button class="btn-post" onclick="postReview()">Post Review</button>
+          </div>
+        </div>
+        <div class="review-list" id="reviewList">
+          <div class="review-item">
+            <div class="review-header">
+              <div class="review-avatar" style="background:linear-gradient(135deg,#e50914,#ff6b6b)">R</div>
+              <div><div class="review-name">Rohit A.</div><div class="review-stars">★★★★★</div></div>
+              <span class="review-time">2 weeks ago</span>
+            </div>
+            <p class="review-text">Aamir's transformation was insane. I remember the entire country going to gyms after this film came out. But beyond the abs, the love story between Sanjay and Kalpana is genuinely heartbreaking. The flashback structure is masterful.</p>
+            <div class="review-footer"><span class="review-react">👍 Helpful (84)</span><span class="review-react">💬 Reply</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="detail-sidebar">
+      <div class="content-block">
+        <div class="block-title">Ratings</div>
+        <div class="ratings-display">
+          <div class="rating-box imdb"><div class="score-label">IMDB</div><div class="score-big">7.4</div><div class="star-row"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star half">★</span><span class="star half">★</span></div><div class="score-sub">118K votes</div></div>
+          <div class="rating-box rt" style="background:rgba(245,197,24,0.07);border-color:rgba(245,197,24,0.2)"><div class="score-label" style="color:var(--gold2)">Box Office India</div><div class="score-big" style="color:var(--gold)">₹200Cr</div><div class="score-sub">Historic milestone</div><div class="score-sub" style="margin-top:4px">Budget: ₹40Cr</div></div>
+        </div>
+      </div>
+      <div class="content-block">
+        <div class="block-title">Film Info</div>
+        <table class="info-table">
+          <tr><td>Director</td><td>A.R. Murugadoss</td></tr>
+          <tr><td>Written by</td><td>A.R. Murugadoss</td></tr>
+          <tr><td>Original</td><td>Ghajini (Tamil, 2005)</td></tr>
+          <tr><td>Music</td><td>A.R. Rahman</td></tr>
+          <tr><td>Runtime</td><td>184 minutes</td></tr>
+          <tr><td>Released</td><td>December 25, 2008</td></tr>
+          <tr><td>Box Office</td><td>₹200 Cr (India record)</td></tr>
+          <tr><td>Inspired by</td><td>Memento (Christopher Nolan)</td></tr>
+        </table>
+        <div style="margin-top:16px"><div class="genre-tags"><span class="genre-tag">Hindi</span><span class="genre-tag">Action</span><span class="genre-tag">Thriller</span><span class="genre-tag">Romance</span><span class="genre-tag">Revenge</span></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+<script>
+  const navbar=document.getElementById('navbar');window.addEventListener('scroll',()=>navbar.classList.toggle('scrolled',window.scrollY>40));
+  function updateAuthUI(){const user=localStorage.getItem('loggedInUser');if(user){document.getElementById('loginBtn').style.display='none';document.getElementById('userPill').style.display='flex';document.getElementById('userName').textContent=user;document.getElementById('userAvatar').textContent=user[0].toUpperCase();}}
+  function handleLogout(){localStorage.removeItem('loggedInUser');location.reload();}
+  updateAuthUI();
+  function showToast(msg,type='info'){const c=document.getElementById('toastContainer');const t=document.createElement('div');t.className=`toast ${type}`;t.textContent=msg;c.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transform='translateX(20px)';setTimeout(()=>t.remove(),400);},3000);}
+  function toggleWishlist(){const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');const title='Ghajini';const btn=document.getElementById('wishlistBtn');const idx=wl.indexOf(title);if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed','info');}localStorage.setItem('wishlist',JSON.stringify(wl));}
+  let liked=false;function handleLike(){liked=!liked;document.getElementById('likeBtn').style.background=liked?'rgba(33,208,122,0.3)':'';showToast(liked?'👍 Liked!':'Like removed','success');}
+  function handleDislike(){showToast('👎 Noted.','info');}function handleShare(){navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success');}
+  let sel=0;function setStars(n){sel=n;document.querySelectorAll('#starPicker span').forEach((s,i)=>s.classList.toggle('lit',i<n));document.getElementById('starLabel').textContent=['','Terrible','Poor','Average','Good','Excellent'][n];}
+  function postReview(){const input=document.getElementById('reviewInput');const list=document.getElementById('reviewList');if(!input.value.trim()){showToast('Write a review first','error');return;}if(!sel){showToast('Please rate first','error');return;}const user=localStorage.getItem('loggedInUser')||'Anonymous';const sh='★'.repeat(sel)+`<span style="color:var(--surface3)">${'★'.repeat(5-sel)}</span>`;const item=document.createElement('div');item.className='review-item';item.innerHTML=`<div class="review-header"><div class="review-avatar">${user[0].toUpperCase()}</div><div><div class="review-name">${user}</div><div class="review-stars">${sh}</div></div><span class="review-time">Just now</span></div><p class="review-text">${input.value}</p><div class="review-footer"><span class="review-react">👍 Helpful (0)</span></div>`;list.insertBefore(item,list.firstChild);input.value='';sel=0;setStars(0);showToast('✅ Review posted!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('Ghajini')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+</script>
+</body>
+</html>
