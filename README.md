@@ -8,9 +8,6 @@ The project is designed as a front-end entertainment platform inspired by modern
 ---
 
 ## Live Preview
-
-> Add your GitHub Pages link here after deployment.
-
 ```text
 https://aditya099pat.github.io/KritiQ/
 ```
