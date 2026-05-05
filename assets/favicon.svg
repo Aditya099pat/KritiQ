@@ -1,0 +1,21 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="64" height="64" rx="14" fill="#09090B"/>
+
+  <!-- Subtle red glow -->
+  <circle cx="32" cy="32" r="26" fill="#DC2626" opacity="0.16"/>
+
+  <!-- Main K -->
+  <path d="M17 15V49" stroke="#EF4444" stroke-width="7" stroke-linecap="round"/>
+  <path d="M21 32L38 15" stroke="#EF4444" stroke-width="7" stroke-linecap="round"/>
+  <path d="M21 32L39 49" stroke="#EF4444" stroke-width="7" stroke-linecap="round"/>
+
+  <!-- Q Circle -->
+  <circle cx="43" cy="38" r="10" stroke="#F9FAFB" stroke-width="5"/>
+
+  <!-- Q Tail -->
+  <path d="M49.5 45.5L55 51" stroke="#F9FAFB" stroke-width="5" stroke-linecap="round"/>
+
+  <!-- Small cinematic underline -->
+  <rect x="14" y="54" width="36" height="3" rx="1.5" fill="#EF4444"/>
+</svg>

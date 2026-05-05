@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escape from Pretoria — KritiQ</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+</head>
+<body>
+
+<div class="toast-container" id="toastContainer"></div>
+
+<nav class="navbar" id="navbar">
+  <a href="index.html" class="logo">KRITI<span>Q</span></a>
+  <div class="nav-links">
+    <a href="index.html" class="nav-link">Home</a>
+    <a href="index.html#trending" class="nav-link">Movies</a>
+    <a href="index.html#top10" class="nav-link">Top 10</a>
+    <a href="index.html#boxoffice" class="nav-link">Box Office</a>
+  </div>
+  <div class="nav-right">
+    <div class="search-wrap">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" placeholder="Search titles...">
+    </div>
+    <a href="login page.html" id="loginBtn"><button class="btn-login">Sign In</button></a>
+    <div class="user-pill" id="userPill" style="display:none" onclick="handleLogout()">
+      <div class="user-avatar" id="userAvatar">G</div>
+      <span id="userName">Guest</span>
+    </div>
+  </div>
+</nav>
+
+<div class="detail-hero" style="--backdrop: url('https://m.media-amazon.com/images/M/MV5BMDEzNjE1OTI3NV5BMl5BanBnXkFtZTgwNjU3NzQ1NzM@._V1_.jpg')">
+  <div class="detail-hero-bg"></div>
+  <div class="detail-hero-content">
+    <div class="detail-poster">
+      <img src="https://m.media-amazon.com/images/M/MV5BMDEzNjE1OTI3NV5BMl5BanBnXkFtZTgwNjU3NzQ1NzM@._V1_.jpg" alt="Escape from Pretoria poster">
+    </div>
+    <div class="detail-info">
+      <h1>ESCAPE FROM PRETORIA</h1>
+      <div class="detail-meta-row">
+        <div class="score-imdb"><div><div class="score-label">IMDB</div><div class="score-num">6.8</div></div><span style="color:var(--gold);font-size:22px">★</span></div>
+        <div class="score-rt"><div><div class="score-label">KritiQ Score</div><div class="score-num">8.1</div></div><span style="font-size:18px">🎬</span></div>
+        <span class="detail-tag">2020</span>
+        <span class="detail-tag">Thriller · Drama · Biography</span>
+        <span class="detail-tag">PG-13</span>
+        <span class="detail-tag">1h 46m</span>
+        <span style="color:var(--blue);font-weight:700;font-size:14px">Based on true events</span>
+      </div>
+      <p style="margin-top:18px;color:var(--text2);max-width:760px;line-height:1.8;">
+        Two political prisoners plan a high-risk escape from Pretoria Central Prison during apartheid-era South Africa. The film focuses on intelligence, courage, and the tension of a near-impossible breakout.
+      </p>
+    </div>
+  </div>
+</div>
+
+<div style="padding:20px clamp(20px,6vw,96px);border-bottom:1px solid var(--line);display:flex;gap:12px;flex-wrap:wrap;align-items:center;background:var(--bg2);">
+  <button class="action-btn wishlist" id="wishlistBtn" onclick="toggleWishlist()"><span>🔖</span> Add to Wishlist</button>
+  <button class="action-btn like" id="likeBtn" onclick="handleLike()"><span>👍</span> Like <span id="likeCount">2.8K</span></button>
+  <button class="action-btn dislike" onclick="handleDislike()"><span>👎</span> Dislike</button>
+  <button class="action-btn share" onclick="handleShare()"><span>🔗</span> Share</button>
+  <div style="margin-left:auto;color:var(--text3);font-size:13px;"><span style="color:var(--accent2);font-weight:700;">🔐 Prison Escape Thriller</span> — tense, intelligent and compact</div>
+</div>
+
+<div class="detail-body">
+  <div class="detail-grid">
+    <div class="detail-main">
+      <div class="trailer-wrap">
+        <iframe src="https://www.youtube.com/embed/fXMTfFb1qjA" title="Escape from Pretoria trailer" allowfullscreen loading="lazy"></iframe>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Overview</div>
+        <p class="review-text" style="font-size:15px;line-height:1.8;color:var(--text2);">
+          Escape from Pretoria delivers a focused survival-thriller experience built around careful planning, pressure, and suspense. It is a strong fit for viewers who enjoy prison-break stories with realistic stakes rather than exaggerated action.
+        </p>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">KritiQ Review</div>
+        <p class="review-text" style="font-size:15px;line-height:1.8;color:var(--text2);">
+          The film works best when it slows down and lets the tension build through small details: keys, routines, timing, and silence. Daniel Radcliffe gives the story a grounded center, while the direction keeps the escape mechanics clear and engaging.
+        </p>
+      </div>
+
+      <div class="content-block">
+        <div class="block-title">Audience Reviews</div>
+        <div id="reviewList">
+          <div class="review-item">
+            <div class="review-header"><div class="review-avatar">K</div><div><div class="review-name">KritiQ Viewer</div><div class="review-stars">★★★★<span style="color:var(--surface3)">★</span></div></div><span class="review-time">Featured</span></div>
+            <p class="review-text">A tight and suspenseful escape movie with a strong true-story feel.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="detail-sidebar">
+      <div class="content-block">
+        <div class="block-title">Movie Details</div>
+        <table class="info-table">
+          <tr><td>Director</td><td>Francis Annan</td></tr>
+          <tr><td>Cast</td><td>Daniel Radcliffe, Daniel Webber, Ian Hart</td></tr>
+          <tr><td>Genre</td><td>Thriller, Drama, Biography</td></tr>
+          <tr><td>Runtime</td><td>106 minutes</td></tr>
+          <tr><td>Released</td><td>2020</td></tr>
+        </table>
+        <div style="margin-top:16px"><div class="genre-tags"><span class="genre-tag">Thriller</span><span class="genre-tag">Drama</span><span class="genre-tag">True Story</span><span class="genre-tag">Prison Escape</span></div></div>
+      </div>
+    </aside>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">
+    <span>© 2025 KritiQ. All rights reserved.</span>
+    <a href="index.html" style="color:var(--accent2);font-weight:600;">← Back to Home</a>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 40));
+  function updateAuthUI() { const user = localStorage.getItem('loggedInUser'); if (user) { document.getElementById('loginBtn').style.display='none'; document.getElementById('userPill').style.display='flex'; document.getElementById('userName').textContent=user; document.getElementById('userAvatar').textContent=user[0].toUpperCase(); } }
+  function handleLogout() { localStorage.removeItem('loggedInUser'); location.reload(); }
+  updateAuthUI();
+  function showToast(msg, type='info') { const c=document.getElementById('toastContainer'); const t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg; c.appendChild(t); setTimeout(()=>{ t.style.opacity='0'; t.style.transform='translateX(20px)'; setTimeout(()=>t.remove(),400); },3000); }
+  function toggleWishlist() { const wl=JSON.parse(localStorage.getItem('wishlist')||'[]'); const title='Escape from Pretoria'; const btn=document.getElementById('wishlistBtn'); const idx=wl.indexOf(title); if(idx===-1){wl.push(title);btn.classList.add('active');btn.innerHTML='<span>✅</span> In Wishlist';showToast(`"${title}" added`,'success');}else{wl.splice(idx,1);btn.classList.remove('active');btn.innerHTML='<span>🔖</span> Add to Wishlist';showToast('Removed','info');}localStorage.setItem('wishlist',JSON.stringify(wl)); }
+  let liked=false;
+  function handleLike(){liked=!liked;document.getElementById('likeBtn').style.background=liked?'rgba(33,208,122,0.3)':'';showToast(liked?'👍 Liked!':'Like removed','success');}
+  function handleDislike(){showToast('👎 Noted.','info');}
+  function handleShare(){navigator.clipboard?.writeText(location.href);showToast('🔗 Link copied!','success');}
+  const wl=JSON.parse(localStorage.getItem('wishlist')||'[]');if(wl.includes('Escape from Pretoria')){document.getElementById('wishlistBtn').classList.add('active');document.getElementById('wishlistBtn').innerHTML='<span>✅</span> In Wishlist';}
+</script>
+</body>
+</html>
