@@ -53,7 +53,7 @@ The main focus of this project is:
 
 ![Sign In Page](screenshots/SignIn.png)
 
-### Register Page
+## Register Page
 
 ![Register Page](screenshots/Register.png)
 
@@ -148,22 +148,5 @@ cd KritiQ
 Open `index.html` directly in your browser.
 
 For a better development experience, open the project in VS Code and run it using the **Live Server** extension.
-
----
-
-## Deployment with GitHub Pages
-
-To deploy the project using GitHub Pages:
-
-1. Open the GitHub repository.
-2. Go to **Settings**.
-3. Open **Pages** from the sidebar.
-4. Under **Build and deployment**, select **Deploy from a branch**.
-5. Choose:
-   - Branch: `main`
-   - Folder: `/root`
-6. Click **Save**.
-
-GitHub will generate a live website URL after a short delay.
 
 ---
