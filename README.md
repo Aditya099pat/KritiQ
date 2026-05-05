@@ -35,93 +35,27 @@ The main focus of this project is:
 
 # Website Screenshots
 
-The screenshots below are arranged in order so the README feels like a top-to-bottom walkthrough of the website.
-
----
-
 ## Homepage Walkthrough
-
-### 1. Homepage Hero Section
-
 ![Homepage Hero Section](screenshots/Homepage1.png)
-
-The homepage begins with a cinematic hero section featuring the KritiQ logo, navigation bar, search bar, featured title, rating, genre tags, and call-to-action buttons.
-
----
-
-### 2. Stats and Top 10 Section
-
 ![Homepage Top 10 Section](screenshots/Homepage2.png)
-
-This section displays platform statistics, category filters, and the Top 10 titles of the day in a horizontal card-based layout.
-
----
-
-### 3. Trending and Box Office Sections
-
 ![Homepage Trending and Box Office](screenshots/Homepage3.png)
-
-The homepage continues with curated content sections such as Trending in India and Top Box Office India, showing popular titles with posters, ratings, years, and categories.
-
----
-
-### 4. Homepage Footer
-
 ![Homepage Footer](screenshots/Homepage4.png)
-
-The footer contains the KritiQ brand description, discovery links, genre links, account links, copyright details, and a clean closing layout.
 
 ---
 
 ## Title Landing Page Walkthrough
-
-### 1. Landing Page Hero Section
-
 ![Landing Page Hero](screenshots/Landing1.png)
-
-The title detail page opens with a large cinematic banner, poster, title, ratings, tags, and user action buttons such as wishlist, like, dislike, and share.
-
----
-
-### 2. Trailer, Ratings, and Show Information
-
 ![Landing Page Trailer and Ratings](screenshots/Landing2.png)
-
-This section includes a trailer preview area, rating cards, rating distribution, show information, genre tags, and streaming availability.
-
----
-
-### 3. Storyline, Cast, and Reviews Section
-
 ![Landing Page Storyline and Cast](screenshots/Landing3.png)
-
-The detail page continues with a storyline section, cast cards, community review input, and supporting show information.
-
----
-
-### 4. Community Reviews and Footer
-
 ![Landing Page Reviews and Footer](screenshots/Landing4.png)
 
-The page ends with community reviews, user feedback cards, footer spacing, copyright text, and a navigation link back to the homepage.
+## Sign In Page
 
----
-
-## Authentication Pages
-
-### Sign In Page
-
-![Sign In Page](screenshots/Sign In.png)
-
-The sign-in page follows the same dark cinematic design and includes username/password fields, guest/demo options, account navigation, and supporting feature highlights.
-
----
+![Sign In Page](screenshots/SignIn.png)
 
 ### Register Page
 
 ![Register Page](screenshots/Register.png)
-
-The register page provides a clean account creation form with username, email, password, and confirm password fields in a centered card layout.
 
 ---
 
@@ -144,36 +78,11 @@ The register page provides a clean account creation form with username, email, p
 
 ---
 
-## Pages Included
-
-The project includes the following pages:
-
-- `index.html`
-- `the boys.html`
-- `avatar.html`
-- `dune.html`
-- `spiderman.html`
-- `godfather.html`
-- `shawshank.html`
-- `game of thrones.html`
-- `the family man.html`
-- `3 idiots.html`
-- `agneepath.html`
-- `ghajini.html`
-- `kabirsingh.html`
-- `kho gaye hum kahan.html`
-- `escape.html`
-- `login page.html`
-- `create_acc.html`
-
----
-
 ## Tech Stack
 
 - HTML5
 - CSS3
 - Vanilla JavaScript
-- SVG favicon
 
 ---
 
@@ -242,27 +151,6 @@ For a better development experience, open the project in VS Code and run it usin
 
 ---
 
-## Screenshots Setup
-
-Create a folder named `screenshots` in the project root and save your screenshots with these exact names:
-
-```text
-screenshots/Homepage1.png
-screenshots/Homepage2.png
-screenshots/Homepage3.png
-screenshots/Homepage4.png
-screenshots/Landing1.png
-screenshots/Landing2.png
-screenshots/Landing3.png
-screenshots/Landing4.png
-screenshots/Sign In.png
-screenshots/Register.png
-```
-
-The screenshots will automatically appear in this README after the files are pushed to GitHub.
-
----
-
 ## Deployment with GitHub Pages
 
 To deploy the project using GitHub Pages:
@@ -279,29 +167,3 @@ To deploy the project using GitHub Pages:
 GitHub will generate a live website URL after a short delay.
 
 ---
-
-## Future Improvements
-
-- Add working search functionality
-- Add interactive carousel controls
-- Add working wishlist storage
-- Add user review submission logic
-- Improve mobile responsiveness
-- Add genre, year, and rating filters
-- Connect the website to a movie database API
-- Add page transitions and animations
-- Add backend authentication in the future
-
----
-
-## Author
-
-**Aditya Patil**
-
-GitHub: [Aditya099pat](https://github.com/Aditya099pat)
-
----
-
-## License
-
-This project is created for learning, portfolio, and educational purposes.
