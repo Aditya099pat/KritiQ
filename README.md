@@ -147,5 +147,5 @@ Open `index.html` directly in your browser.
 For a better development experience, open the project in VS Code and run it using the **Live Server** extension.
 
 How is the website?!!
-I personally just love it xo xo!
+I personally just love it!
 ---
